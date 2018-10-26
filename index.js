@@ -9,10 +9,6 @@ mongoose.connect(keys.mongoURI, () => {
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('hello mp3');
-})
-
 const _PORT = process.env.PORT || 5000;
 app.listen(_PORT, () => {
   console.log('listen port', _PORT);

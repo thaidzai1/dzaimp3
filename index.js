@@ -35,10 +35,10 @@ app.use(passport.session());
 
 //config if in production mode server will send built html file in client folder
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/dist'));
+  app.use(express.static('client/public'));
   const path = require('path');
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+    res.sendFile(path.resolve(__dirname, "client", "public", "index.html"));
   })
 }
 

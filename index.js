@@ -43,10 +43,6 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 require('./routes')(app);
-app.get('/auth/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
-})
 
 //create port and server
 const _PORT = process.env.PORT || 5000;

@@ -2,7 +2,11 @@
   margin: 0;
   padding: 0;
 }
-
+h1{
+  z-index: 9999999;
+  color: white;
+  font-size: 50px;
+}
 @-webkit-keyframes login_dropdown {
   0% {
     -webkit-transform: translate(0, -600px);

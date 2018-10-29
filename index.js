@@ -33,6 +33,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./routes')(app);
+
 //config if in production mode server will send built html file in client folder
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('client/public'));
@@ -41,8 +43,6 @@ if(process.env.NODE_ENV === 'production'){
     res.sendFile(path.resolve(__dirname, "client", "public", "index.html"));
   })
 }
-
-require('./routes')(app);
 
 //create port and server
 const _PORT = process.env.PORT || 5000;

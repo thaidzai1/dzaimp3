@@ -11,6 +11,7 @@ const Menu = props => {
         <li><Link to='/hot' className='menu-item'>Hot 100</Link></li>
         <li><Link to='/myplaylist' className='menu-item'>My Playlists</Link></li>
         <li className='on-right'><Link to='Login' className='menu-item'>Login</Link></li>
+        <li className='on-right'><a href='/auth/logout' className='menu-item'>Logout</a></li>
       </ul>
     </div>
   )

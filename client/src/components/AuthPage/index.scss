@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@-webkit-keyframes login_dropdown {
+  0% {
+    -webkit-transform: translate(0, -600px);
+            transform: translate(0, -600px);
+    opacity: 0;
+  }
+  40% {
+    -webkit-transform: translate(0, -600px);
+            transform: translate(0, -600px);
+    opacity: 0;
+  }
+  90% {
+    -webkit-transform: translate(0, 100px);
+            transform: translate(0, 100px);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes login_dropdown {
+  0% {
+    -webkit-transform: translate(0, -600px);
+            transform: translate(0, -600px);
+    opacity: 0;
+  }
+  40% {
+    -webkit-transform: translate(0, -600px);
+            transform: translate(0, -600px);
+    opacity: 0;
+  }
+  90% {
+    -webkit-transform: translate(0, 100px);
+            transform: translate(0, 100px);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/image/login-bg1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  .auth-form {
+    background-color: rgba(51 ,51, 51, 0.8);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    box-sizing: border-box;
+    width: 40%;
+    height: 450px;
+    position: absolute;
+    transition: all 1s;
+    -webkit-animation: login_dropdown 2s linear 1;
+    animation: login_dropdown 1.6s linear 1;
+    opacity: 1;
+  }
+  .redirect {
+    opacity: 0.4;
+    transform: translate(0, 600px);
+  }
+  .auth-header {
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+    font-size: 40px;
+  }
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+  .input-group {
+    display: flex;
+    width: 80%;
+    flex-direction: column-reverse;
+    position: relative;
+    input:focus ~ label,
+    input:valid ~ label{
+      top: -15px;
+      font-size: 15px;
+      color: #a4dcff;
+    }
+    input:focus {
+      border-color: #a4dcff;
+    }
+  }
+  label {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    font-weight: bold;
+    transition: 0.8s;
+    top: 10px;
+    left: 0;
+    z-index: 2;
+  }
+  input {
+    height: 40px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid white;
+    outline: none;
+    color: white;
+    font-size: 18px;
+    z-index: 3
+  }
+  .username {
+    margin-bottom: 30px;
+  }
+  .button-group {
+    margin-top: 40px;
+    width: 90%;
+    .but-login:hover {
+      background-color: #3ab3ff;
+      color: white;
+    }
+  }
+  button {
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+    border-color: #a4dcff;
+  }
+  .but-login {
+    color: #a4dcff;
+    font-size: 20px;
+    padding: 10px 0;
+    transition: 0.8s;
+  }
+  .auth-oauth {
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 10px;
+    display: flex;
+    p {
+      color: white;
+      font-size: 20px;
+      .lazy {
+        color: #ffb4b4;
+      }
+    }
+    .oauth-icon {
+      .icon {
+        outline-offset: 2px;
+        text-align: center;
+        line-height: 30px;
+        width: 30px;
+        height: 30px;
+        font-size: 15px;
+        opacity: 1;
+        transition: 0.8s;
+        cursor: pointer;
+        margin-left: 12px;
+        background-color: #f3f3f3;
+        outline: 2px solid #f3f3f3;
+      }
+      .icon-google {
+        color: #d34436;
+      }
+      .fa-google-plus-g:hover {
+        background-color: #d34435;
+        color: #f3f3f3;
+        outline-color: #d34435;
+      }
+      .icon-facebook {
+        color: #3b5998;
+      }
+      .fa-facebook-f:hover {
+        background-color: #3b5998;
+        color: #f3f3f3;
+        outline-color: #3b5998;
+      }
+    }
+  }
+  .forgot-pass {
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 20px;
+    p {
+      color: white;
+      a{
+        text-decoration: none;
+        color: white;
+        transition: 1s;
+        cursor: pointer;
+      }
+      .forgot-link:hover {
+        color: #aac3ff;
+      }
+    }
+  }
+}

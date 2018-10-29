@@ -4,8 +4,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js'
+    path: path.join(__dirname, '/public'),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
+  devServer: {
+    historyApiFallback: true,
+    inline: true,
+    contentBase: './public',
+    port: 3000,
+    proxy: {
+      "/auth/*": {
+        target: "http://localhost:5000", secure: false
+      },
+    }
   },
   module: {
     rules: [
@@ -32,6 +44,6 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: './public/index.html' })
+    new HtmlWebpackPlugin({ template: './src/index.html' })
   ]
 }

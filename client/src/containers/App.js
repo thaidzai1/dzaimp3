@@ -6,6 +6,7 @@ import { getCurrentUser } from '../actions/authActions'
 import LoginPage from './LoginPage'
 import SignupPage from './SignUpPage'
 import MainPage from './MainPage'
+import Albums from './Albums'
 
 class App extends Component {
   componentDidMount(){
@@ -16,6 +17,7 @@ class App extends Component {
       <BrowserRouter>
         <div className='app'>
           <Route path='/' exact component={MainPage}></Route>
+          <Route path='/albums' component={Albums}></Route>
           <Route path='/login' component={LoginPage}></Route>
           <Route path='/signup' component={SignupPage}></Route>
         </div>

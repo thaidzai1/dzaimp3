@@ -9,6 +9,9 @@
   },
   "author": "ThaiDuong",
   "license": "ISC",
+  "proxy": {
+    "/auth/*": "http://localhost:5000"
+  },
   "devDependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-proposal-class-properties": "^7.1.0",

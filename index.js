@@ -44,12 +44,6 @@ if(process.env.NODE_ENV === 'production'){
 
 require('./routes')(app);
 
-app.get('/', (req, res) => {
-  res.send('nothing');
-})
-
 //create port and server
 const _PORT = process.env.PORT || 5000;
-app.listen(_PORT, () => {
-  console.log('listen port', _PORT);
-})
+app.listen(_PORT)

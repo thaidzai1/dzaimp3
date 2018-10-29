@@ -8,7 +8,7 @@ class LoginPage extends Component {
 
   render() {
     const { auth } = this.props;
-
+    console.log(auth);
     if(auth.user !== undefined){
       return <Redirect to='/' />
     }

@@ -9,7 +9,7 @@ class SignupPage extends Component {
   render() {
     const { auth } = this.props;
 
-    if(auth.user !== undefined){
+    if(auth !== null){
       return <Redirect to='/' />
     }
 

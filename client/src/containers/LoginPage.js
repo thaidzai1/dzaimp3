@@ -5,11 +5,9 @@ import { connect } from 'react-redux'
 import { AuthPage } from '../components'
 
 class LoginPage extends Component {
-
   render() {
     const { auth } = this.props;
-    console.log(auth);
-    if(auth.user !== undefined){
+    if(auth !== null){
       return <Redirect to='/' />
     }
 

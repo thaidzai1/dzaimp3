@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay, faPause, faFastForward, faFastBackward } from '@fortawesome/free-solid-svg-icons'
 
 import './index.scss'
 
@@ -7,13 +9,9 @@ class FloatMusic extends Component {
     super(props);
 
     this.state = {
-      expand: true,
-      list_song: ['Latata', 'Hann', 'WHISTLE'],
-      current_song_name: null,
-      current_song_id: null,
-      play: false,
-      playing: false,
-      playingSong: null
+      expand: false,
+      play: true,
+      playing: true,
     }
     this.floatmusic = React.createRef();
     this.closeFloating = React.createRef();
@@ -24,83 +22,73 @@ class FloatMusic extends Component {
   }
 
   handleFloatMusicClick = e => {
-    console.log(this.closeFloating.current);
     if(this.closeFloating.current != null) {
       if(e.target.contains(this.closeFloating.current)){
-        console.log('close');
         this.setState({
           expand: false
         })
       }
     }
     else {
-      console.log('nothing');
       this.setState({
         expand: true
       })
     }
   }
 
-  startASong = (song_id) => {
-    const { list_song } = this.state;
-    let song = new Audio();
-    song.src = `/audio/${list_song[song_id]}.mp3`;
-    this.setState({playingSong: song, current_song_name: list_song[song_id], current_song_id: song_id});
-    song.play();
-    song.addEventListener('timeupdate', this.seekBarTimeUpdate);
+  startASong = () => {
+    const { song } = this.props.player;
+    song.audio.addEventListener('timeupdate', this.seekBarTimeUpdate);
   }
 
   handlePlay = () => {
-    const { play, playing, playingSong } = this.state;
-    if(!play){
-      this.setState({play: true, playing: true});
-      this.startASong(0);
+    const { play, playing } = this.state;
+    const { song } = this.props.player;
+
+    if(playing){
+      song.audio.pause();
+      this.setState({playing: false})
     }
     else {
-      if(playing){
-        playingSong.pause();
-        this.setState({playing: false})
-      }
-      else {
-        playingSong.play();
-        this.setState({playing: true})
-      }
+      song.audio.play();
+      this.setState({playing: true})
     }
   }
 
   seekBarTimeUpdate = () => {
-    const { playingSong, current_song_id, list_song } = this.state;
+    const { song } = this.props.player;
+    const { playing, play } = this.state;
     let fillBar = document.getElementById('fill-bar');
-    let position = playingSong.currentTime / playingSong.duration;
+    let position = song.audio.currentTime / song.audio.duration;
     if(fillBar){
       fillBar.style.width = position * 100 + '%';
     }
     if(position === 1) {
-      if(current_song_id + 1 < list_song.length){
-        this.startASong(current_song_id + 1);
-      }
-      else {
-        this.setState({playing: false, play: false})
-      }
+      this.setState({playing: false, play: false})
+    }
+    else if( position < 1 && playing === false && play === false){
+      this.setState({playing: true, play: true});
     }
   }
 
   renderFloatStyle = () => {
-    const { current_song_name, playing } = this.state;
+    const { playing } = this.state;
+    const { player } = this.props;
     if(this.state.expand) {
       return (
         <div className='fab-music expand'>
           <div className='song-details'>
             <div className='song-image'></div>
-            <h2>{current_song_name !== null ? current_song_name : "This is song's name"}</h2>
+            <h2>{player !== null ? player.song.songName : "This is song's name"}</h2>
           </div>
           <div className='options'>
             <div className='buttons'>
-              <button><img src='/image/previous.svg' /></button>
-              <button onClick={this.handlePlay}>
-                <img src={playing ? '/image/pause.svg' : '/image/play.svg'}/>
+              <button><FontAwesomeIcon icon={faFastBackward} /></button>
+              <button
+                onClick={this.handlePlay}>
+                {playing ? <FontAwesomeIcon icon={faPause}/> : <FontAwesomeIcon icon={faPlay}/>}
               </button>
-              <button><img src='/image/next.svg' /></button>
+              <button><FontAwesomeIcon icon={faFastForward} /></button>
             </div>
             <div className='seek-bar'>
               <div className='fill' id='fill-bar'></div>
@@ -115,6 +103,11 @@ class FloatMusic extends Component {
   }
 
   render() {
+    const { player } = this.props;
+    console.log(this.state);
+    if(player !== null) {
+      this.startASong();
+    }
     return (
       <div className='float-music' ref={this.floatmusic}>
         {this.renderFloatStyle()}

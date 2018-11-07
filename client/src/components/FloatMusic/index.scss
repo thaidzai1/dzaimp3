@@ -52,13 +52,15 @@ $float-position-left: 20px;
       align-items: center;
       .buttons {
         flex: 2 1 200px;
+        display: flex;
+        justify-content: center;
         align-items: center;
         button {
           background-color: transparent;
           border: none;
           padding: 0 20px;
           outline: none;
-          transform: scale(0.8);
+          transform: scale(1.5);
           cursor: pointer;
         }
       }

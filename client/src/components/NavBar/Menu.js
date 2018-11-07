@@ -23,6 +23,7 @@ const Menu = props => {
         <li><Link to='/albums' className='menu-item'>Albums</Link></li>
         <li><Link to='/hot' className='menu-item'>Hot 100</Link></li>
         <li><Link to='/myplaylist' className='menu-item'>My Playlists</Link></li>
+        <li><Link to='/song/213' className='menu-item'>Test Song</Link></li>
         { renderAuth() }
       </ul>
     </div>

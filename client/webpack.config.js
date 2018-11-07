@@ -17,6 +17,9 @@ module.exports = {
       "/auth/*": {
         target: "http://localhost:5000", secure: false
       },
+      "/api/*": {
+        target: "http://localhost:5000", secure: false
+      }
     }
   },
   module: {

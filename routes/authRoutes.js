@@ -31,7 +31,7 @@ router.post('/signup', async (req, res) => {
   console.log(username,email, password, existedUser);
   if(existedUser) {
     if(existedUser.password === null) {
-      existedUser.password = existedUser.hashPassword(password);
+      existedUser.password = await existedUser.hashPassword(password);
       existedUser.save();
       return res.status(200).json(existedUser);
     }

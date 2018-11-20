@@ -12,7 +12,11 @@ class MainPage extends Component {
   }
 
   render() {
-    const { match } = this.props;
+    const { match, location } = this.props;
+    console.log(this.props);
+    if(location.pathname === '/login' || location.pathname === '/signup'){
+      return null;
+    }
     return (
       <div className='main-page'>
         <NavBarContainer />

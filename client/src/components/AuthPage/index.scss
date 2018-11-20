@@ -65,12 +65,12 @@
     border-radius: 30px;
     box-sizing: border-box;
     width: 40%;
-    height: 450px;
+    min-height: 450px;
     position: absolute;
     transition: all 1s;
     -webkit-animation: login_dropdown 2s linear 1;
     animation: login_dropdown 1.6s linear 1;
-    opacity: 1;
+    flex: 1;
   }
   .redirect {
     opacity: 0.4;
@@ -124,13 +124,14 @@
     outline: none;
     color: white;
     font-size: 18px;
-    z-index: 3
+    z-index: 3;
+    margin-bottom: 20px;
   }
   .username {
     margin-bottom: 30px;
   }
   .button-group {
-    margin-top: 40px;
+    margin-top: 30px;
     width: 90%;
     .but-login:hover {
       background-color: #3ab3ff;
@@ -197,6 +198,7 @@
   .forgot-pass {
     margin-top: 20px;
     margin-left: 10px;
+    margin-bottom: 20px;
     font-size: 20px;
     p {
       color: white;

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { GET_CURRENT_USER } from './types'
+import { GET_CURRENT_USER, SIGN_UP, LOGIN } from './types'
 
 export const getCurrentUser = () => async dispatch => {
   const res = await axios.get('/auth/current_user');
@@ -10,4 +10,23 @@ export const getCurrentUser = () => async dispatch => {
       payload: res.data
     })
   }
+}
+
+export const Login = user => async dispatch => {
+  const res = await axios.post('/auth/login', user);
+  console.log(res);
+  if(res.status === 200) {
+    return dispatch ({
+      type: LOGIN,
+      payload: res.data
+    })
+  }
+}
+
+export const signUp = user => async dispatch => {
+  const res = await axios.post('/auth/signup', user);
+  return dispatch({
+    type: SIGN_UP,
+    payload: res.data
+  })
 }

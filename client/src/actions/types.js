@@ -1,4 +1,6 @@
 export const GET_CURRENT_USER = 'GET_CURRENT_USER';
+export const SIGN_UP = 'SIGN_UP';
+export const LOGIN = 'LOGIN';
 
 //player
 export const GET_SONG_AUDIO = 'GET_SONG_AUDIO';

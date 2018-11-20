@@ -9,10 +9,11 @@ module.exports = {
     publicPath: '/'
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: true, //fix router reload error
     inline: true,
     contentBase: './public',
     port: 3000,
+    //config proxy for deve env
     proxy: {
       "/auth/*": {
         target: "http://localhost:5000", secure: false

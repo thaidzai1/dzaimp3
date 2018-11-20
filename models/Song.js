@@ -10,7 +10,8 @@ const songSchema = new Schema({
   created_at: {
     type: Date,
     default: Date.now
-  }
+  },
+  album_id: Schema.Types.ObjectId
 })
 
 mongoose.model('songs', songSchema);

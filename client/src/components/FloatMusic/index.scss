@@ -85,6 +85,11 @@ $float-position-left: 20px;
           transform: scale(2);
         }
       }
+      .playlist {
+        flex: 1 1;
+        display: flex;
+        justify-content: center;
+      }
       .close {
         flex: 1 1;
         display: flex;

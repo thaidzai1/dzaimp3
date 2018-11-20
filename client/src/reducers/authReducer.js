@@ -1,4 +1,4 @@
-import { GET_CURRENT_USER } from '../actions/types'
+import { GET_CURRENT_USER, SIGN_UP, LOGIN } from '../actions/types'
 
 const initialState = null;
 
@@ -8,6 +8,16 @@ export default function (state = initialState, action){
       return {
         ...state,
         user: action.payload
+      }
+    case LOGIN:
+      console.log(action.payload);
+      return {
+        ...state,
+        user: action.payload
+      }
+    case SIGN_UP:
+      return {
+        ...state
       }
     default:
       return state;

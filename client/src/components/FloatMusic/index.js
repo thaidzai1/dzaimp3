@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause, faFastForward, faFastBackward } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faPause, faFastForward, faFastBackward, faList } from '@fortawesome/free-solid-svg-icons'
 
 import './index.scss'
 
@@ -14,26 +14,22 @@ class FloatMusic extends Component {
       playing: true,
     }
     this.floatmusic = React.createRef();
-    this.closeFloating = React.createRef();
   }
 
   componentDidMount() {
     this.floatmusic.current.onclick = this.handleFloatMusicClick;
   }
 
-  handleFloatMusicClick = e => {
-    if(this.closeFloating.current != null) {
-      if(e.target.contains(this.closeFloating.current)){
-        this.setState({
-          expand: false
-        })
-      }
-    }
-    else {
-      this.setState({
-        expand: true
-      })
-    }
+  handleFloatMusicClick = () => {
+    this.setState({
+      expand: true
+    })
+  }
+
+  handleCloseFloat = () => {
+    this.setState({
+      expand: false
+    })
   }
 
   startASong = () => {
@@ -94,17 +90,21 @@ class FloatMusic extends Component {
               <div className='fill' id='fill-bar'></div>
               <div className='handle'></div>
             </div>
-            <div className='close' ref={this.closeFloating}>&#x2715;</div>
+            <div className='playlist'>
+              <FontAwesomeIcon icon={faList}/>
+            </div>
+            <div className='close'
+              onClick={this.handleCloseFloat}
+            >&#x2715;</div>
           </div>
         </div>
-        )
+      )
     }
     return <div className='fab-music' ref={this.fabMusic}><img src='/image/floatmusic.svg' /></div>
   }
 
   render() {
     const { player } = this.props;
-    console.log(this.state);
     if(player !== null) {
       this.startASong();
     }

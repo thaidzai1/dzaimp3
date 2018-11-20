@@ -9,7 +9,10 @@ class SignupPage extends Component {
   constructor(props){
     super(props);
     this.state = {
-      redirect: false
+      redirect: false,
+      username: '',
+      password: '',
+      email: ''
     }
     this.signUpForm = React.createRef();
   }
@@ -23,6 +26,17 @@ class SignupPage extends Component {
     }, 1000)
   }
 
+  signUpNewAccount = event => {
+    event.preventDefault();
+    const { username, password, email } = this.state;
+    const user = {username, password, email};
+    this.props.signUp(user);
+  }
+
+  handleOnChange = event => {
+    this.setState({[event.target.name]: event.target.value});
+  }
+
   render() {
     const { redirect } = this.state;
     if(redirect) {
@@ -33,12 +47,18 @@ class SignupPage extends Component {
       <div className='auth-page'>
         <div className='auth-form' ref={this.signUpForm}>
           <h1 className='auth-header'>SignUp</h1>
-          <form>
+          <form onSubmit={this.signUpNewAccount}>
             <TextBox
               type='text' name='username' labelName='Username'
+              handleOnChange={this.handleOnChange}
+            ></TextBox>
+            <TextBox
+              type='email' name='email' labelName='Email'
+              handleOnChange={this.handleOnChange}
             ></TextBox>
             <TextBox
               type='password' name='password' labelName='Password'
+              handleOnChange={this.handleOnChange}
             ></TextBox>
             <div className='button-group'>
               <button className='but-login'>Sign Up</button>

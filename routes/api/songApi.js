@@ -26,6 +26,7 @@ const upload = multer({
 })
 
 const songMiddleware = require('../../middleware/songMiddleware');
+const auth = require('../../middleware/authorization');
 
 const Song = mongoose.model('songs');
 
@@ -36,6 +37,7 @@ router.get('/song/new', async (req, res) => {
 })
 
 router.post('/upload/file',
+  auth.admin,
   upload.single('file'),
   (req, res) => {
     res.json(req.body);
@@ -52,8 +54,8 @@ router.get('/song/:id', async (req, res) => {
   }
 })
 
-router.put('/song/:id', async (req, res) => {
-  const { songName, singer, poster, audio, song_image } = req.body;
+router.put('/song/:id', auth.admin, async (req, res) => {
+  const { songName, singer, poster, audio, song_image, album_id } = req.body;
   let song = await Song.findById(req.params.id);
 
   if(song !== null) {
@@ -62,6 +64,7 @@ router.put('/song/:id', async (req, res) => {
     song.poster = poster;
     song.audio = audio;
     song.song_image = song_image;
+    song.album_id = album_id;
     song.save();
     res.status(200).json(song);
   }
@@ -70,11 +73,19 @@ router.put('/song/:id', async (req, res) => {
   }
 })
 
-router.post('/song', songMiddleware.validateSong, async (req, res) => {
-  const { songName, singer, poster, audio, song_image } = req.body;
-  const newSong = await new Song({ songName, singer, poster, audio, song_image }).save();
+router.post('/song', auth.admin, songMiddleware.validateSong, async (req, res) => {
+  const { songName, singer, poster, audio, song_image, album_id } = req.body;
+  const newSong = await new Song({ songName, singer, poster, audio, song_image, album_id }).save();
 
   res.status(200).json(newSong);
+})
+
+router.get('/allsongs/:page_num', async (req, res) => {
+  const { page_num } = req.params;
+  console.log(page_num);
+  let songs = await Song.find({}).sort({created_at: -1}).skip(2*(page_num-1)).limit(2);
+
+  return res.status(200).json(songs);
 })
 
 router.post('/test', (req, res) => {

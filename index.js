@@ -3,11 +3,9 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
-// const bodyParser = require('body-parser');
 
 require('./models/Song');
 require('./models/User');
-require('./services/passport');
 const keys = require('./config/keys');
 
 //connect to database mongodb
@@ -19,7 +17,6 @@ const db = mongoose.connection;
 const app = express();
 
 app.use(express.json());
-// app.use(bodyParser.urlencoded());
 
 //setup session
 app.use(session({
@@ -37,6 +34,7 @@ app.use(session({
 //config passport
 app.use(passport.initialize());
 app.use(passport.session());
+require('./services/passport')(passport);
 
 require('./routes')(app);
 

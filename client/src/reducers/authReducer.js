@@ -17,7 +17,8 @@ export default function (state = initialState, action){
       }
     case SIGN_UP:
       return {
-        ...state
+        ...state,
+        error: action.payload
       }
     default:
       return state;

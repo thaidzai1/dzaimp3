@@ -8,7 +8,7 @@ import { AuthPage } from '../components'
 class LoginPage extends Component {
   render() {
     const { auth, Login } = this.props;
-    if(auth !== null){
+    if(auth !== null && auth.user !== undefined){
       return <Redirect to='/' />
     }
 

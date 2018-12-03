@@ -39,12 +39,14 @@ class SignupPage extends Component {
 
   render() {
     const { redirect } = this.state;
+    const { error } = this.props;
     if(redirect) {
       return <Redirect to='/login' />
     }
 
     return (
       <div className='auth-page'>
+        {error ? <p className='error'>{error.message}</p> : null}
         <div className='auth-form' ref={this.signUpForm}>
           <h1 className='auth-header'>SignUp</h1>
           <form onSubmit={this.signUpNewAccount}>

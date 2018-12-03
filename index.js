@@ -6,6 +6,7 @@ const passport = require('passport');
 
 require('./models/Song');
 require('./models/User');
+require('./models/playlist');
 const keys = require('./config/keys');
 
 //connect to database mongodb

@@ -5,21 +5,23 @@ import { getNewSongs } from '../actions/songActions'
 import { HomePage } from '../components'
 
 class HomePageContainer extends Component {
-
   componentDidMount() {
     this.props.getNewSongs();
   }
 
   render() {
-    const { song } = this.props;
+    const { song, playlist, auth } = this.props;
+    
     return (
       <HomePage
         newSong={song.newSong}
+        playlist={playlist}
+        auth={auth}
       />
     )
   }
 }
 
-const mapStateToProps = ({ song }) => ({ song });
+const mapStateToProps = ({ song, playlist, auth }) => ({ song, playlist, auth });
 
 export default connect(mapStateToProps, { getNewSongs })(HomePageContainer)

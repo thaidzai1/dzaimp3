@@ -1,20 +1,17 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause, faFastForward, faFastBackward } from '@fortawesome/free-solid-svg-icons'
+import { faPlay, faPause, faFastForward, faFastBackward, faList } from '@fortawesome/free-solid-svg-icons'
+
+import Playlist from './playlist'
 
 const ExpandFloat = props => {
-  const { player, playing, handlePlayPause, handleCloseFloat } = props;
-
-  const handlePlay = () => {
-    handlePlayPause();
-  }
-
-  const handleMinimizeFloat = () => {
-    handleCloseFloat();
-  }
+  const {
+     player, playing, show_playlist, auth, playlist,
+      handlePlay, handleCloseFloat, togglePlaylist, startPlaylist, playSongInPlaylist
+  } = props;
 
   return (
-    <div className='fab-music expand'>
+    <div className='expand-holder'>
       <div className='song-details'>
         <div className='song-image'></div>
         <h2>{player !== null ? player.song.songName : "This is song's name"}</h2>
@@ -32,7 +29,16 @@ const ExpandFloat = props => {
           <div className='fill' id='fill-bar'></div>
           <div className='handle'></div>
         </div>
-        <div className='close' onClick={handleMinimizeFloat}>&#x2715;</div>
+        <div className='playlist'>
+          {
+            show_playlist ? <Playlist
+              auth={auth} playlist={playlist}
+              startPlaylist={startPlaylist}
+            /> : null
+          }
+          <FontAwesomeIcon icon={faList} onClick={togglePlaylist}/>
+        </div>
+        <div className='close' onClick={handleCloseFloat}>&#x2715;</div>
       </div>
     </div>
   )

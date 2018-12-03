@@ -3,6 +3,7 @@ const passport = require('passport');
 const mongoose = require('mongoose');
 
 const User = mongoose.model('users');
+const playList = mongoose.model('playlists');
 
 router.get('/google', passport.authenticate('google', {scope: ['profile', 'email']}))
 
@@ -28,15 +29,14 @@ router.get('/current_user', (req, res) => {
 router.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
   const existedUser = await User.findOne({email: email});
-  console.log(username,email, password, existedUser);
   if(existedUser) {
     if(existedUser.password === null) {
       existedUser.password = await existedUser.hashPassword(password);
       existedUser.save();
-      return res.status(200).json(existedUser);
+      return res.status(200).json(null);
     }
     else {
-      return res.status(409).json({
+      return res.status(200).json({
         message: 'email is existed'
       })
     }
@@ -46,9 +46,13 @@ router.post('/signup', async (req, res) => {
     user.username = username;
     user.email = email;
     user.password = await user.hashPassword(password);
-
     await user.save();
-    return res.status(200).json(user);
+
+    const playlist = new playList();
+    playlist.user_id = user._id;
+    playlist.save();
+
+    return res.status(200).json(null);
   }
 })
 

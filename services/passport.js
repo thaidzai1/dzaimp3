@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 
 const keys = require('../config/keys');
 const User = mongoose.model('users');
+const playList = mongoose.model('playlists');
+
 module.exports = passport => {
   passport.serializeUser((user, done) => {
     done(null, user.id);
@@ -52,6 +54,9 @@ module.exports = passport => {
       }
 
       const user = await new User({username: profile.displayName, email: profile.emails[0].value, googleId: profile.id}).save();
+
+      const playlist = await new playList({user_id: user._id}).save();
+
       return done(null, user);
     }
   ))

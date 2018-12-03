@@ -24,9 +24,18 @@ export const Login = user => async dispatch => {
 }
 
 export const signUp = user => async dispatch => {
-  const res = await axios.post('/auth/signup', user);
-  return dispatch({
-    type: SIGN_UP,
-    payload: res.data
-  })
+  let res;
+  try{
+    res = await axios.post('/auth/signup', user);
+    console.log(res);
+  }
+  catch(err) {
+    console.log(err);
+  }
+  finally {
+    return dispatch({
+      type: SIGN_UP,
+      payload: res.data
+    })
+  }
 }

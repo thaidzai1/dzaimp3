@@ -213,4 +213,16 @@
       }
     }
   }
+  .error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: #eca154ad;
+    font-size: 22px;
+    padding: 3px 0px;
+    text-transform: capitalize;
+  }
 }

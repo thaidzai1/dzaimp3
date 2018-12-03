@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause, faFastForward, faFastBackward, faList } from '@fortawesome/free-solid-svg-icons'
 
+import ExpandFloat from './expand'
 import './index.scss'
 
 class FloatMusic extends Component {
@@ -12,12 +11,27 @@ class FloatMusic extends Component {
       expand: false,
       play: true,
       playing: true,
+      show_playlist: false
     }
     this.floatmusic = React.createRef();
   }
 
   componentDidMount() {
     this.floatmusic.current.onclick = this.handleFloatMusicClick;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    const { player } = this.props;
+    if(this.props !== nextProps) {
+      if(player !== nextProps.player && player !== null ){
+        player.song.audio.pause();
+        player.song.audio.currentTime = 0;
+      }
+      return true;
+    }
+    if(this.state !== nextState){
+      return true;
+    }
   }
 
   handleFloatMusicClick = () => {
@@ -33,7 +47,8 @@ class FloatMusic extends Component {
   }
 
   startASong = () => {
-    const { song } = this.props.player;
+    const { song, playlist } = this.props.player;
+    song.audio.play();
     song.audio.addEventListener('timeupdate', this.seekBarTimeUpdate);
   }
 
@@ -52,7 +67,8 @@ class FloatMusic extends Component {
   }
 
   seekBarTimeUpdate = () => {
-    const { song } = this.props.player;
+    const { song, playlist, nowSong } = this.props.player;
+    const { playlistAutoNext } = this.props;
     const { playing, play } = this.state;
     let fillBar = document.getElementById('fill-bar');
     let position = song.audio.currentTime / song.audio.duration;
@@ -60,43 +76,37 @@ class FloatMusic extends Component {
       fillBar.style.width = position * 100 + '%';
     }
     if(position === 1) {
-      this.setState({playing: false, play: false})
+      if(playlist !== null && playlist.length > 1 && playlist.length-1 > nowSong) {
+        let nextSong = playlist[nowSong+1];
+        playlistAutoNext(nextSong, nowSong+1);
+      }
+      else {
+        this.setState({playing: false, play: false})
+      }
     }
     else if( position < 1 && playing === false && play === false){
       this.setState({playing: true, play: true});
     }
   }
 
+  togglePlaylist = () => {
+    this.setState({show_playlist: !this.state.show_playlist});
+  }
+
   renderFloatStyle = () => {
-    const { playing } = this.state;
-    const { player } = this.props;
+    const { playing, show_playlist } = this.state;
+    const { player, auth, playlist, startPlaylist, playSongInPlaylist } = this.props;
     if(this.state.expand) {
       return (
         <div className='fab-music expand'>
-          <div className='song-details'>
-            <div className='song-image'></div>
-            <h2>{player !== null ? player.song.songName : "This is song's name"}</h2>
-          </div>
-          <div className='options'>
-            <div className='buttons'>
-              <button><FontAwesomeIcon icon={faFastBackward} /></button>
-              <button
-                onClick={this.handlePlay}>
-                {playing ? <FontAwesomeIcon icon={faPause}/> : <FontAwesomeIcon icon={faPlay}/>}
-              </button>
-              <button><FontAwesomeIcon icon={faFastForward} /></button>
-            </div>
-            <div className='seek-bar'>
-              <div className='fill' id='fill-bar'></div>
-              <div className='handle'></div>
-            </div>
-            <div className='playlist'>
-              <FontAwesomeIcon icon={faList}/>
-            </div>
-            <div className='close'
-              onClick={this.handleCloseFloat}
-            >&#x2715;</div>
-          </div>
+          <ExpandFloat
+            player={player} playing={playing} playlist={playlist}
+            show_playlist={show_playlist} auth={auth}
+            handlePlay={this.handlePlay}
+            handleCloseFloat={this.handleCloseFloat}
+            togglePlaylist={this.togglePlaylist}
+            startPlaylist={startPlaylist}
+          />
         </div>
       )
     }
@@ -105,7 +115,8 @@ class FloatMusic extends Component {
 
   render() {
     const { player } = this.props;
-    if(player !== null) {
+    const { play, playing } = this.state;
+    if(player !== null && playing !== false) {
       this.startASong();
     }
     return (

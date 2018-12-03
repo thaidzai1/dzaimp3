@@ -45,6 +45,9 @@ class Song extends Component {
 
   render() {
     const { player } = this.props;
+    // if(player !== null){
+    //   player.audio.play();
+    // }
     console.log(player);
     return (
       <div className='listen-song'>

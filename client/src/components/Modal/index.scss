@@ -1,0 +1,47 @@
+@mixin body-darker($bool) {
+  @if $bool == true {
+    background-color: rgba(51, 51, 51, 0.5);
+    z-index: 9999;
+  }
+}
+
+.modal-layer {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(51, 51, 51, 0.2);
+  transition: all 0.5s ease;
+  transform: scale(0);
+  .modal {
+    position: fixed;
+    height: 100px;
+    width: 300px;
+    top: 45%;
+    right: 40%;
+    border-radius: 20px;
+    border: 1px solid #333;
+    background-color: white;
+    font-size: 20px;
+    z-index: 999999;
+    .close {
+      margin:2px 2px;
+      display: flex;
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+.modal-isOpen {
+  transform: scale(1);
+  z-index: 999;
+  // :before {
+  //   content: '';
+  //   position: fixed;
+  //   height: 100vh;
+  //   width: 100vw;
+  //   top:-50%; left: 0;
+  //   @include body-darker(true);
+  // }
+}

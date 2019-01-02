@@ -25,7 +25,7 @@ playlistSchema.methods.getUserPlaylists = async function(id) {
   return await this.model('playlists').aggregate([
     { $match: { user_id: user_id}},
     { $project: { list: 1}},
-    { $unwind: "$list"},
+    { $unwind: { path: "$list", preserveNullAndEmptyArrays: true}},
     { $unwind: { path: "$list.songs", preserveNullAndEmptyArrays: true}},
     {
       $lookup: {

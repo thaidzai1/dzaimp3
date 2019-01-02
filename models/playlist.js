@@ -86,7 +86,8 @@ playlistSchema.methods.getUserPlaylists = async function(id) {
           }
         }
       }
-    }
+    },
+    // { $unwind: { path: "$list.songs", preserveNullAndEmptyArrays: true}}
   ]);
 }
 

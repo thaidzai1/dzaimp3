@@ -21,6 +21,10 @@ router.get('/playlist/:user_id', async (req, res) => {
   const { user_id } = req.params;
   // const playlist = await Playlist.findOne({user_id: user_id}).select('list -_id');
   const playlist = await Playlist().getUserPlaylists(user_id);
+  console.log(playlist[0]);
+  if(playlist[0].list.length === 1 && playlist[0].list[0]._id === undefined) {
+    playlist[0].list.pop();
+  }
   return res.status(200).json(playlist[0]);
 })
 

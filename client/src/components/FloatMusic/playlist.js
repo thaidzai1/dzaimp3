@@ -2,13 +2,12 @@ import React from 'react'
 
 import List from './list'
 
-const Playlist = ({auth, playlist, startPlaylist, playSongInPlaylist}) => {
+const Playlist = props => {
   return (
     <div className='box-list'>
       {
-        auth === null ? 'You must login to use this' :
-        <List playlist={playlist}
-          startPlaylist={startPlaylist}
+        props.auth === null ? 'You must login to use this' :
+        <List {...props}
         />
       }
     </div>

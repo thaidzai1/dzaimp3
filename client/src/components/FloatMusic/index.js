@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 import ExpandFloat from './expand'
 import './index.scss'
@@ -21,14 +22,20 @@ class FloatMusic extends Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const { player } = this.props;
+    const { player, playlist, updatePlayerPlaylist } = this.props;
+
     if(this.props !== nextProps) {
       if(player !== nextProps.player && player !== null ){
         player.song.audio.pause();
         player.song.audio.currentTime = 0;
+        this.setState({ play: true, playing: true});
+      }
+      if(playlist !== nextProps.playlist && playlist !== null && player !== null && player.hasOwnProperty('playlist')){
+        this.props.updatePlayerPlaylist(playlist.list[0].songs);
       }
       return true;
     }
+
     if(this.state !== nextState){
       return true;
     }
@@ -76,9 +83,8 @@ class FloatMusic extends Component {
       fillBar.style.width = position * 100 + '%';
     }
     if(position === 1) {
-      if(playlist !== null && playlist.length > 1 && playlist.length-1 > nowSong) {
-        let nextSong = playlist[nowSong+1];
-        playlistAutoNext(nextSong, nowSong+1);
+      if(playlist !== null && playlist[playlist.length-1]._id !== song._id) {
+        playlistAutoNext();
       }
       else {
         this.setState({playing: false, play: false})
@@ -95,17 +101,15 @@ class FloatMusic extends Component {
 
   renderFloatStyle = () => {
     const { playing, show_playlist } = this.state;
-    const { player, auth, playlist, startPlaylist, playSongInPlaylist } = this.props;
     if(this.state.expand) {
       return (
         <div className='fab-music expand'>
           <ExpandFloat
-            player={player} playing={playing} playlist={playlist}
-            show_playlist={show_playlist} auth={auth}
+            {...this.props}
+            {...this.state}
             handlePlay={this.handlePlay}
             handleCloseFloat={this.handleCloseFloat}
             togglePlaylist={this.togglePlaylist}
-            startPlaylist={startPlaylist}
           />
         </div>
       )
@@ -125,6 +129,18 @@ class FloatMusic extends Component {
       </div>
     )
   }
+}
+
+FloatMusic.propTypes = {
+  player: PropTypes.object,
+  auth: PropTypes.object,
+  playlist: PropTypes.object,
+  startPlaylist: PropTypes.func,
+  playlistAutoNext: PropTypes.func,
+  removeSongFromPlaylist: PropTypes.func,
+  updatePlayerPlaylist: PropTypes.func,
+  createPlaylist: PropTypes.func,
+  deletePlaylist: PropTypes.func
 }
 
 export default FloatMusic

@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 
 import './index.scss'
+
 const InnerModal = ({toggleModal, body}) => {
   return (
     <div className='modal'>
-      <div className='close' onClick={toggleModal}>&#10005;</div>
+      <div className='option'>
+        <div className='close' onClick={() => toggleModal()}>&#10005;</div>
+      </div>
       <div className='body'>
         {body}
       </div>
@@ -48,6 +52,11 @@ class Modal extends Component {
       </div>
     )
   }
+}
+
+Modal.propTypes = {
+  body: PropTypes.node,
+  toggleModal: PropTypes.func
 }
 
 export default Modal

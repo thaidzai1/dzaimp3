@@ -1,0 +1,53 @@
+.album-detail {
+  display: flex;
+  .album-info {
+    flex-basis: 20%;
+    .album-pic {
+      width: 250px;
+      height: 250px;
+      position: relative;
+      overflow: hidden;
+      background-size: contain;
+      background-repeat: no-repeat;
+      .btn-play {
+        position: absolute;
+        color: white;
+        font-size: 50px;
+        z-index: 2;
+        left: 50%;
+        top: 100%;
+        transform: translate(-50%, 100%);
+        opacity: 1;
+        transition: 0.5s ease;
+        cursor: pointer;
+      }
+    }
+    .album-pic:before {
+      content: '';
+      background-color: rgba(51, 51, 51, 0.6);
+      position: absolute;
+      z-index:1;
+      transition: 0.5s ease;
+      opacity: 1;
+      transform: translate(0, 100%);
+      width: 100%;
+      height: 100%;
+    }
+    .album-pic:hover:before {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+    .album-pic:hover .btn-play {
+      top: 50%;
+      left: 50%;
+      opacity: 1;
+      transform: translate( -50%, -50%);
+    }
+    .detail {
+    }
+  }
+  .list-song {
+    flex-basis: 80%;
+    padding: 0 10px;
+  }
+}

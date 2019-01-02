@@ -1,0 +1,36 @@
+.bar-music {
+  margin: 1px 0;
+  background-color: #adadad;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  .music-img {
+    width: 30px;
+    height: 30px;
+    position: relative;
+  }
+  .song-info {
+    margin-left: 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .options {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    .btn-play, .btn-addlist, .btn-heart {
+      padding: 0 5px;
+      color: #4593c1;
+      cursor: pointer;
+    }
+    .btn-heart {
+      color: #333;
+    }
+  }
+}
+
+.bar-music-light {
+  background-color: #c1bfbfba !important;
+}

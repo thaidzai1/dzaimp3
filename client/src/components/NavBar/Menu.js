@@ -16,7 +16,7 @@ const Menu = props => {
     ]
   }
   return (
-    <div className='menu'>
+    <div className='menu' id='menu'>
       <ul>
         <li className='label'><Link to='/'><img src='/image/DzaiMp3.png' /></Link></li>
         <li><Link to='/' className='menu-item'>Home</Link></li>

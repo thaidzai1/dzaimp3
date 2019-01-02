@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getUserPlaylist } from '../actions/playlistActions'
-import { startPlaylist, playlistAutoNext } from '../actions/playerActions'
+import {
+  getUserPlaylist, removeSongFromPlaylist, createPlaylist, deletePlaylist
+} from '../actions/playlistActions'
+import { startPlaylist, playlistAutoNext, updatePlayerPlaylist } from '../actions/playerActions'
 import { FloatMusic } from '../components'
+import initAnalyser from '../util/initAnalyzer'
 
-class FloatPlayerContainer extends Component {
+class FloatPlayer extends Component {
   componentDidMount() {
     const { auth, getUserPlaylist } = this.props;
     if(auth !== null && auth.user !== undefined) {
@@ -22,6 +25,7 @@ class FloatPlayerContainer extends Component {
       return true;
     }
     if(player !== nextProps.player){
+      initAnalyser(nextProps.player.song.audio);
       return true;
     }
     return false;
@@ -29,14 +33,11 @@ class FloatPlayerContainer extends Component {
   render() {
     const {
       player, auth, playlist,
-      startPlaylist, playlistAutoNext
+      startPlaylist, playlistAutoNext, removeSongFromPlaylist
     } = this.props;
 
     return (
-      <FloatMusic player={player} auth={auth} playlist={playlist}
-        startPlaylist={startPlaylist}
-        playlistAutoNext={playlistAutoNext}
-      />
+      <FloatMusic {...this.props}/>
     )
   }
 }
@@ -47,6 +48,10 @@ export default connect(mapStateToProps,
    {
      getUserPlaylist,
      startPlaylist,
-     playlistAutoNext
+     playlistAutoNext,
+     removeSongFromPlaylist,
+     updatePlayerPlaylist,
+     createPlaylist,
+     deletePlaylist
    }
- )(FloatPlayerContainer)
+ )(FloatPlayer)

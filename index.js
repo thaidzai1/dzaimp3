@@ -5,6 +5,8 @@ const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 
 require('./models/Song');
+require('./models/Singer');
+require('./models/Album');
 require('./models/User');
 require('./models/playlist');
 const keys = require('./config/keys');

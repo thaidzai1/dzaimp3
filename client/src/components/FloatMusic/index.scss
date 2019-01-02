@@ -46,6 +46,10 @@ $float-position-left: 20px;
       h2 {
         flex-grow: 1;
         text-align: center;
+        a {
+          text-decoration: none;
+          color: #333;
+        }
       }
     }
     .options {
@@ -93,25 +97,105 @@ $float-position-left: 20px;
         justify-content: center;
         .box-list {
           background-color: white;
-          border: 2px solid black;
+          border: 1px solid black;
           width: 20vw;
           height: 200px;
           position: absolute;
           top: -200px;
           right: 5%;
           // text-align: center;
+          .list {
+            max-height: 200px;
+            overflow-y: auto;
+            .box-create {
+              border: 1px dashed #333;
+              height: 50px;
+              margin: 5px 5%;
+              width: 90%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              svg {
+                font-size: 20px;
+                flex-basis: 10%;
+                margin: 0 5px;
+              }
+              p {
+                flex-basis: 90%;
+              }
+            }
+            .list-option {
+              height: 50px;
+              margin: 5px 0;
+              display: flex;
+              flex-flow: column;
+              input {
+                height: 25px;
+                width: 90%;
+                margin-left: 10px;
+              }
+              .list-buttons {
+                margin-top: 5px;
+                text-align: center;
+                button {
+                  border-radius: 2px;
+                  border-width: 0.6px;
+                  border-style: solid;
+                  background-color: transparent;
+                  padding: 2px 5px;
+                  font-size: 16px;
+                  cursor: pointer;
+                }
+                button:nth-child(1) {
+                  border-color: green;
+                  color: green;
+                  margin-right: 5px;
+                }
+                button:nth-child(2) {
+                  border-color: red;
+                  color: red;
+                }
+              }
+            }
+          }
+          .list::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            border-radius: 10px;
+            background-color: #F5F5F5;
+          }
+          .list::-webkit-scrollbar {
+            width: 2px;
+            background-color: #F5F5F5;
+          }
+          .list::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-image: linear-gradient(rgba(0, 137, 255, 0.47058823529411764), rgba(153, 236, 255, 0.2784313725490196));
+          }
+          .list:hover::-webkit-scrollbar {
+            width: 5px;
+          }
           .list-item {
             display: flex;
             height: 50px;
-            .disc {
-              // background-image: url('/image/playlist.png');
-              // background-size: contain;
-              // background-repeat: no-repeat;
+            .list-info {
+              display: flex;
+              flex-basis: 90%;
+            }
+            .disc-container {
               flex: 1 1;
               font-size: 40px;
               display: flex;
               justify-content: center;
               align-items: center;
+              overflow: hidden;
+            }
+            .disc {
+              // background-image: url('/image/playlist.png');
+              // background-size: contain;
+              // background-repeat: no-repeat;
+
+              border-radius: 50%;
               animation: disc_rotate 2s infinite linear;
             }
             .info {
@@ -121,6 +205,10 @@ $float-position-left: 20px;
               p {
                 font-size: 20px;
               }
+            }
+            .remove {
+              align-self: center;
+              flex-basis: 10%;
             }
           }
           .header {
@@ -132,8 +220,10 @@ $float-position-left: 20px;
             }
           }
           .song-item {
+            display: flex;
             .song-info {
               height: 50px;
+              flex-basis: 90%;
               display: flex;
               .poster {
                 flex: 1 1;
@@ -145,6 +235,10 @@ $float-position-left: 20px;
                 display: flex;
                 align-items: center;
               }
+            }
+            .remove {
+              flex-basis: 10%;
+              align-self: center;
             }
           }
         }
@@ -168,6 +262,9 @@ $float-position-left: 20px;
         .box-list:before {
           border-color: black transparent transparent transparent;
           border-width: 12px;
+        }
+        .boxlist > .list {
+          overflow-y: auto;
         }
       }
       .close {

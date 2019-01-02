@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHandPointRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 import NewSongItem from './NewSongItem'
+import NewAlbumItem from './NewAlbumItem'
 import Modal from '../Modal'
 import AddPlaylistModalItem from './AddPlaylistModalItem'
+import Loader from '../../HOC/Loader'
 import './index.scss'
 
 class HomePage extends Component {
@@ -13,50 +16,68 @@ class HomePage extends Component {
     super(props);
 
     this.state = {
-      open_modal_playlist: false
+      add_song_id: null
     }
   }
 
-  toggleModelPlaylist = () => {
+  addToPlaylist = (song_id=null) => {
     this.setState({
-      open_modal_playlist: !this.state.open_modal_playlist
+      add_song_id: song_id
     })
   }
 
   render() {
-    const { newSong, playThisSong, playlist, auth } = this.props;
-    const { open_modal_playlist } = this.state;
+    const {
+      newSong, newAlbums, playThisSong, playlist, auth,
+      addSongToPlaylist, removeSongFromPlaylist
+    } = this.props;
+    const { add_song_id } = this.state;
 
     return (
       <div className='home-page'>
         <div className='main'>
           <div className='new-song'>
             <div className='title'>
-              <h1><span><FontAwesomeIcon icon={faHandPointRight}/></span>New Song > </h1>
+              <h1><span><FontAwesomeIcon icon={faHandPointRight}/></span>New Songs > </h1>
             </div>
             {
               newSong.map((item, index) => {
                 return (
                     <NewSongItem song={item} key={index}
                       playlist={playlist} auth={auth}
-                      toggleModelPlaylist={this.toggleModelPlaylist}
+                      addToPlaylist={this.addToPlaylist}
                     />
                 )
               })
             }
-            <Modal isOpen={open_modal_playlist} toggleModal={this.toggleModelPlaylist}>
+            <Modal isOpen={add_song_id ? true : false} toggleModal={this.addToPlaylist}>
               {
                 auth && playlist ?
                   playlist.list.map((item, index) =>
-                    <AddPlaylistModalItem key={index} 
+                    <AddPlaylistModalItem key={index}
                       playlist={item}
+                      user_id={auth.user._id}
+                      song_id={add_song_id}
+                      addSongToPlaylist={addSongToPlaylist}
+                      removeSongFromPlaylist={removeSongFromPlaylist}
                     />
                   )
                   : <p>Login to use playlilst</p>
               }
             </Modal>
           </div>
-
+          <div className='new-song'>
+            <div className='title'>
+              <h1><span><FontAwesomeIcon icon={faHandPointRight}/></span>New Albums > </h1>
+            </div>
+            {
+              newAlbums.map((item, index) => {
+                return (
+                  <NewAlbumItem album={item} key={index}/>
+                )
+              })
+            }
+          </div>
         </div>
         <div className='hightlight'></div>
       </div>
@@ -64,4 +85,12 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage
+HomePage.propTypes = {
+  newSong: PropTypes.array,
+  playlist: PropTypes.object,
+  auth: PropTypes.object,
+  addSongToPlaylist: PropTypes.func,
+  removeSongFromPlaylist: PropTypes.func
+}
+
+export default Loader('newSong')(HomePage)

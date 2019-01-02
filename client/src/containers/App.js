@@ -17,9 +17,10 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className='app'>
-          <Route path='/login' exact component={LoginPage}></Route>
-          <Route path='/signup'  component={SignupPage}></Route>
-          <Route path='/' component={MainPage}></Route>
+          <Route path='/login' component={LoginPage}></Route>
+          <Route path='/signup' component={SignupPage}></Route>
+          <Route path='/' component={MainPage}>
+          </Route>
         </div>
       </BrowserRouter>
     )

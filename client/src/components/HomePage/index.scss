@@ -1,10 +1,6 @@
 .home-page {
-  margin: 50px auto 0px auto;
   display: flex;
-  width: 80%;
   height: 1000px;
-  background-color: white;
-  padding: 10px;
   .main {
     width: 65%;
     .new-song {
@@ -145,6 +141,8 @@
         cursor: pointer;
         position: relative;
         margin: 4px 4px;
+
+        align-items: center;
         img {
           height: 40px;
           padding: 5px 5px;
@@ -153,6 +151,13 @@
           display: flex;
           align-items: center;
           margin-left: 10px;
+        }
+        .add-list {
+          margin-left: auto;
+          margin-right: 10px;
+        }
+        .added {
+          color: #1766f7;
         }
       }
       .modal-playlist-item:before, .modal-playlist-item:after {
@@ -167,14 +172,14 @@
         top: 0;
         border-top: 1px solid;
         border-left: 1px solid;
-        transition: height 0.8s ease, width 0.8s ease 0.8s, border-color 0.8s ease;
+        transition: height 0.5s ease, width 0.5s ease 0.5s, border-color 0.5s ease;
       }
       .modal-playlist-item:after {
         bottom: 0;
         right: 0;
         border-bottom: 1px solid;
         border-right: 1px solid;
-        transition: height 0.8s ease, width 0.8s ease 0.8s, border-color 0.8s ease;
+        transition: height 0.5s ease, width 0.5s ease 0.5s, border-color 0.5s ease;
       }
       .modal-playlist-item:hover img {
         animation: bounce_bounce 1.5s infinite ease;
@@ -188,7 +193,7 @@
     }
   }
   .hightlight {
-    background-color: blue;
+    background-color: black;
     width: 35%;
     padding-left: 20px;
   }

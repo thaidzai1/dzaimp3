@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "singer_id": 1,
+        "name": "IAM",
+        "poster": "IAM.jpg"
+    },
+    {
+        "id": 2,
+        "singer_id": 1,
+        "name": "Hann",
+        "poster": "Hann-album.jpg"
+    },
+    {
+        "id": 3,
+        "singer_id": 4,
+        "name": "Different World",
+        "poster": "DifferentWorld.jpg"
+    },
+    {
+        "id": 4,
+        "singer_id": 3,
+        "name": "Red Pill Blue",
+        "poster": "RedPillBlue.jpg"
+    },
+    {
+        "id": 5,
+        "singer_id": 6,
+        "name": "Red Diary Page.1",
+        "poster": "RedDiaryPage1.png"
+    },
+    {
+        "id": 6,
+        "singer_id": 5,
+        "name": "So Far Away",
+        "poster": "sofaraway.jpg"
+    },
+    {
+        "id": 7,
+        "singer_id": 2,
+        "name": "BlackPink In Your Area",
+        "poster": "BlackPinkInYourArea.jpg"
+    },
+    {
+        "id": 8,
+        "singer_id": 2,
+        "name": "As If It's Your Last",
+        "poster": "asifitsyourlast.jpg"
+    }
+]

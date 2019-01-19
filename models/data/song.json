@@ -1,0 +1,58 @@
+[
+    {
+        "songName": "LATATA",
+        "poster": "Latata.jpg",
+        "audio": "Latata.mp3",
+        "song_image": "Latata.jpg",
+        "album_id": 1,
+        "singer_id": "1"
+    },
+    {
+        "songName": "HANN",
+        "poster": "Hann.jpg",
+        "audio": "Hann.mp3",
+        "song_image": "Hann.jpg",
+        "album_id": 2,
+        "singer_id": "1"
+    },
+    {
+        "songName": "Girl like you",
+        "poster": "girl-like-you.jpg",
+        "audio": "Girls like you.mp3",
+        "song_image": "girl-like-you.jpg",
+        "album_id": 4,
+        "singer_id": "3"
+    },
+    {
+        "songName": "So Far Away",
+        "poster": "SoFarAway.jpg",
+        "audio": "So Far Away.mp3",
+        "song_image": "SoFarAway.jpg",
+        "album_id": 6,
+        "singer_id": "5"
+    },
+    {
+        "songName": "DDuDU-DDuDu",
+        "poster": "ddududdudu.jpg",
+        "audio": "DDU-DU_DDU-DU.mp3",
+        "song_image": "ddududdudu.jpg",
+        "album_id": 7,
+        "singer_id": "2"
+    },
+    {
+        "songName": "As If It's You Last",
+        "poster": "asifitsyourlast.jpg",
+        "audio": "AS IF ITS YOUR LAST.mp3",
+        "song_image": "asifitsyourlast.jpg",
+        "album_id": 8,
+        "singer_id": "2"
+    },
+    {
+        "songName": "Lily",
+        "poster": "Lily.jpg",
+        "audio": "Lily.mp3",
+        "song_image": "Lily.jpg",
+        "album_id": 3,
+        "singer_id": "4"
+    }
+]

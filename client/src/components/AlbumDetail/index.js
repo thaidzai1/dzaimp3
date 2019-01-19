@@ -8,13 +8,15 @@ import './index.scss'
 
 class AlbumDetail extends React.Component {
   render() {
-    const { album, songs } = this.props;
+    const { album, songs, startPlaylist } = this.props;
+
     if(album) {
       return (
         <div className='album-detail'>
           <div className='album-info'>
-            <div className='album-pic' style={{backgroundImage: `url(/image/poster/${album.poster})`}}>
-              <FontAwesomeIcon icon={faPlayCircle} className='btn-play'/>
+            <div className='album-pic'>
+              <img src={`/image/poster/${album.poster}`} />
+              <FontAwesomeIcon icon={faPlayCircle} className='btn-play' onClick={() => startPlaylist(songs, album._id)}/>
             </div>
             <div className='detail'>
               <h1>{album.name}</h1>
@@ -23,7 +25,12 @@ class AlbumDetail extends React.Component {
           </div>
           <div className='list-song'>
             {
-              songs.map((song, index) => <BarMusic key={index} index={index} item={song}/>)
+              songs.map((song, index) => 
+                <BarMusic 
+                  key={index} index={index} item={song} 
+                  Play={index => startPlaylist(songs, album._id, index)}
+                />
+              )
             }
           </div>
         </div>

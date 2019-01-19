@@ -17,9 +17,10 @@
   .modal {
     position: fixed;
     max-height: 250px;
-    width: 300px;
-    top: 40%;
-    right: 40%;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 20px;
     border: 1px solid #333;
     background-color: white;
@@ -68,4 +69,10 @@
   //   top:-50%; left: 0;
   //   @include body-darker(true);
   // }
+}
+
+@media only screen and (max-width: 400px) {
+  .modal-layer .modal {
+    width: 100%;
+  }
 }

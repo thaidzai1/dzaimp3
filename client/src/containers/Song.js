@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-import { getSongAudio } from '../actions/playerActions'
+import { getSongAudio, startPlaylist } from '../actions/playerActions'
 import { hideShowAnalyser } from '../actions/analyserActions'
 import { Song } from '../components'
 
@@ -26,14 +26,20 @@ class SongContainer extends Component {
   }
 
   render() {
-    const { match, player } = this.props;
+    const { player, startPlaylist } = this.props;
 
     return (
-      <Song player={player} />
+      <Song player={player} startPlaylist={startPlaylist}/>
     )
   }
 }
 
 const mapStateToProps = ({ player }) => ({ player });
 
-export default connect(mapStateToProps, { getSongAudio, hideShowAnalyser })(SongContainer)
+export default connect(mapStateToProps,
+  { 
+    getSongAudio, 
+    hideShowAnalyser,
+    startPlaylist
+  }
+)(SongContainer)

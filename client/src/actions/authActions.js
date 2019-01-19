@@ -14,7 +14,7 @@ export const getCurrentUser = () => async dispatch => {
 
 export const Login = user => async dispatch => {
   const res = await axios.post('/auth/login', user);
-  console.log(res);
+
   if(res.status === 200) {
     return dispatch ({
       type: LOGIN,
@@ -27,15 +27,12 @@ export const signUp = user => async dispatch => {
   let res;
   try{
     res = await axios.post('/auth/signup', user);
-    console.log(res);
-  }
-  catch(err) {
-    console.log(err);
-  }
-  finally {
     return dispatch({
       type: SIGN_UP,
       payload: res.data
     })
+  }
+  catch(err) {
+    console.log(err);
   }
 }

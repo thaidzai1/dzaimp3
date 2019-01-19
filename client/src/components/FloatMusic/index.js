@@ -30,9 +30,9 @@ class FloatMusic extends Component {
         player.song.audio.currentTime = 0;
         this.setState({ play: true, playing: true});
       }
-      if(playlist !== nextProps.playlist && playlist !== null && player !== null && player.hasOwnProperty('playlist')){
-        this.props.updatePlayerPlaylist(playlist.list[0].songs);
-      }
+      // if(playlist !== nextProps.playlist && playlist !== null && player !== null && player.hasOwnProperty('playlist')){
+      //   updatePlayerPlaylist(playlist.list[1].songs);
+      // }
       return true;
     }
 
@@ -55,12 +55,13 @@ class FloatMusic extends Component {
 
   startASong = () => {
     const { song, playlist } = this.props.player;
+    song.audio.muted = false;
     song.audio.play();
     song.audio.addEventListener('timeupdate', this.seekBarTimeUpdate);
   }
 
   handlePlay = () => {
-    const { play, playing } = this.state;
+    const { playing } = this.state;
     const { song } = this.props.player;
 
     if(playing){
@@ -120,6 +121,7 @@ class FloatMusic extends Component {
   render() {
     const { player } = this.props;
     const { play, playing } = this.state;
+
     if(player !== null && playing !== false) {
       this.startASong();
     }

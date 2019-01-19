@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCompactDisc } from '@fortawesome/free-solid-svg-icons'
 
 const ListItem = ({list, auth, showSongs, deletePlaylist}) => {
-  console.log(list);
+
   return (
     <div className='list-item'>
       <div className='list-info' onClick={() => showSongs(list.songs, list._id)}>

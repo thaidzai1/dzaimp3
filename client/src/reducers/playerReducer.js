@@ -1,5 +1,5 @@
 import {
-  GET_SONG_AUDIO, START_PLAYLIST, PLAYLIST_QUEUE_NEXT, UPDATE_PLAYER_PLAYLIST, HIDE_SHOW_ANALYSER
+  GET_SONG_AUDIO, START_PLAYLIST, PLAYLIST_QUEUE_NEXT, UPDATE_PLAYER_PLAYLIST, HIDE_SHOW_ANALYSER, PLAYLIST_QUEUE_PREVIOUS
 } from '../actions/types'
 
 const initialState = null;
@@ -16,6 +16,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         _id: action.payload.list_id,
+        user_list: action.payload.user_id,
         nowSong: action.payload.songIndex,
         song: action.payload.audio,
         playlist: action.payload.playlist
@@ -27,9 +28,17 @@ export default function(state = initialState, action) {
         nowSong: action.payload.nowSong,
         playlist: action.payload.playlist
       }
+    case PLAYLIST_QUEUE_PREVIOUS:
+      return {
+        ...state,
+        song: action.payload.audio,
+        nowSong: action.payload.nowSong,
+        playlist: action.payload.playlist
+      }
     case UPDATE_PLAYER_PLAYLIST:
       return {
-        ...state
+        ...state,
+        // playlist: action.payload
       }
     default:
       return state;

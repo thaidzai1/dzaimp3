@@ -9,26 +9,27 @@ import {
 const initialState = null;
 
 export default function(state = initialState, action) {
-  let list;
+  let list = [];
   switch(action.type) {
     case GET_USER_PLAYLIST:
       return {
         ...state,
-        list: action.payload
+        list: [...action.payload]
       }
     case ADD_SONG_TO_PLAYLIST:
-      list = state.list;
+      list = JSON.parse(JSON.stringify(state.list));
       list.map(item => {
         if(item._id === action.payload.list_id) {
           item.songs.push(action.payload.song);
         }
       })
+      console.log('reducer', list, state.list);
       return {
         ...state,
         list
       }
     case REMOVE_SONG_FROM_PLAYLIST:
-      list = state.list;
+      list = JSON.parse(JSON.stringify(state.list));
       list.map(item => {
         if(item._id === action.payload.list_id) {
           item.songs.map((song, index) => {
@@ -44,12 +45,13 @@ export default function(state = initialState, action) {
         list
       }
     case CREATE_NEW_PLAYLIST:
+      list = JSON.parse(JSON.stringify(state.list));
       return {
         ...state,
-        list: [...state.list, action.payload]
+        list: [...list, action.payload]
       }
     case DELETE_PLAYLIST:
-      list = [...state.list];
+      list = JSON.parse(JSON.stringify(state.list));
       list.map((item, index) => {
         if(item._id === action.payload) {
           list.splice(index, 1);

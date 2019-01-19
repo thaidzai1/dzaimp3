@@ -3,12 +3,11 @@
   .album-info {
     flex-basis: 20%;
     .album-pic {
-      width: 250px;
-      height: 250px;
       position: relative;
       overflow: hidden;
-      background-size: contain;
-      background-repeat: no-repeat;
+      img {
+        width: 250px;
+      }
       .btn-play {
         position: absolute;
         color: white;
@@ -49,5 +48,15 @@
   .list-song {
     flex-basis: 80%;
     padding: 0 10px;
+  }
+}
+
+
+@media only screen and (max-width: 640px) {
+  .album-detail {
+    flex-direction: column;
+  }
+  .album-pic img {
+    width: 100% !important;
   }
 }

@@ -11,29 +11,63 @@ import Playlist from './playlist'
 const ExpandFloat = props => {
   const {
     player, playing, show_playlist, auth, playlist,
-    handlePlay, handleCloseFloat, togglePlaylist, startPlaylist, playSongInPlaylist, removeSongFromPlaylist, playlistAutoNext, createPlaylist, deletePlaylist
+    handlePlay, handleCloseFloat, togglePlaylist, startPlaylist, removeSongFromPlaylist, playlistAutoNext, createPlaylist,
+    deletePlaylist, playlistPrevious
   } = props;
+
+  const renderSongInfo = () => {
+    if(player !== null) {
+      if(player.playlist !== null){
+        return (
+          <Link to={`/playlist/${player._id}-${player.user_list}`}>
+            {player.song.songName}
+          </Link> 
+        )
+      }
+      else {
+        return (
+          <Link to={`/song/${player.song.songName}/${player.song._id}`}>
+            {player.song.songName}
+          </Link>
+        )
+      }
+    }
+    return (
+      <Link to={''}>
+        {"This is song's name"}
+      </Link>
+    )
+  }
+  
+  const handleFillBarClick = (e) => {
+    console.log('click', e.offsetX, e.target.clientWidth, e);
+    console.log('percent', e.offsetX/e.target.clientWidth);
+    if(player) {
+      let { song } = player;
+      song.audio.currentTime = e.offsetX/e.target.clientWidth * song.audio.duration;
+    }
+  } 
 
   return (
     <div className='expand-holder'>
       <div className='song-details'>
         <div className='song-image'></div>
         <h2>
-          <Link to={player ? `/song/${player.song.songName}/${player.song._id}` : ''}>
-            {player !== null ? player.song.songName : "This is song's name"}
-          </Link>
+          {renderSongInfo()}
         </h2>
       </div>
       <div className='options'>
         <div className='buttons'>
-          <button><FontAwesomeIcon icon={faFastBackward} /></button>
+          <button>
+            <FontAwesomeIcon icon={faFastBackward} onClick={player && player.playlist ? playlistPrevious : null}/>
+          </button>
           <button
             onClick={handlePlay}>
             {playing ? <FontAwesomeIcon icon={faPause}/> : <FontAwesomeIcon icon={faPlay}/>}
           </button>
           <button><FontAwesomeIcon icon={faFastForward} onClick={player && player.playlist ? playlistAutoNext : null} /></button>
         </div>
-        <div className='seek-bar'>
+        <div className='seek-bar' onClick={() => handleFillBarClick(event)}>
           <div className='fill' id='fill-bar'></div>
           <div className='handle'></div>
         </div>

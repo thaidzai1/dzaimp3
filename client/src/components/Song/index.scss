@@ -11,6 +11,29 @@
     #audio {
       width:500px; background:#000; height: 50px;
     }
+
+    .song-info {
+      padding: 10px 0 0 10px;
+      position: relative;
+      z-index: 2;
+      h1 {
+        color: white;
+      }
+      h3 {
+        color: white;
+        display: inline-block;
+        margin-right: 10%;
+        span {
+          font-weight: bold;
+          font-size: 20px;
+        }
+        span .name {
+          cursor: pointer;
+          font-weight: normal;
+          font-size: 18px;
+        }
+      }
+    }
   }
   .song-box:before {
     content: '';
@@ -22,26 +45,8 @@
     z-index: 1;
     // filter: blur(30px);
   }
-  .song-info {
-    padding: 10px 0 0 10px;
-    position: relative;
-    z-index: 2;
-    h1 {
-      color: white;
-    }
-    h3 {
-      color: white;
-      display: inline-block;
-      margin-right: 10%;
-      span {
-        font-weight: bold;
-        font-size: 20px;
-      }
-      span .name {
-        cursor: pointer;
-        font-weight: normal;
-        font-size: 18px;
-      }
-    }
+  .list-box {
+    max-height: 150px;
+    overflow-y: scroll;
   }
 }

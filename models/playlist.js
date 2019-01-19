@@ -9,7 +9,8 @@ const listSchema = new Schema({
   },
   songs: [
     {
-      _id: Schema.Types.ObjectId
+      _id: Schema.Types.ObjectId,
+      added_at: Date
     }
   ]
 })
@@ -19,12 +20,29 @@ const playlistSchema = new Schema({
   list: Array(listSchema)
 })
 
-playlistSchema.methods.getUserPlaylists = async function(id) {
+playlistSchema.methods.getUserPlaylists = async function(id, playlist_id = null) {
   let user_id = mongoose.Types.ObjectId(id);
+  let playlist = mongoose.Types.ObjectId(playlist_id);
+  let query = { $project: { list: 1, user_id: 1}};
 
-  return await this.model('playlists').aggregate([
+  if(playlist_id !== null) {
+    query = {
+      $project: {
+        list: { 
+          $filter: {
+            input: "$list", 
+            as: "list", 
+            cond: { $eq: ["$$list._id", playlist]}
+          }
+        }, 
+        user_id: 1
+      }
+    };
+  }
+
+  let result = await this.model('playlists').aggregate([
     { $match: { user_id: user_id}},
-    { $project: { list: 1}},
+    query,
     { $unwind: { path: "$list", preserveNullAndEmptyArrays: true}},
     { $unwind: { path: "$list.songs", preserveNullAndEmptyArrays: true}},
     {
@@ -63,11 +81,12 @@ playlistSchema.methods.getUserPlaylists = async function(id) {
       }
     },
     { $unwind: { path: '$list.songs.album', preserveNullAndEmptyArrays: true}},
+    // {$sort: { "list.songs.added_at": -1}},
     {
       $group: {
-        _id: { _id: "$_id", list_id: "$list._id", list_name: "$list.list_name"},
+        _id: { _id: "$user_id", list_id: "$list._id", list_name: "$list.list_name"},
         songs: {
-          $addToSet: {
+          $push: {
             $cond: {
               if: { $gt: [ "$list.songs", {} ]},
               then: "$list.songs",
@@ -77,8 +96,21 @@ playlistSchema.methods.getUserPlaylists = async function(id) {
         }
       }
     },
-    {
-      $group: {
+    // {
+    //   $group: {
+    //     _id: { _id: "$user_id", list_id: "$list._id", list_name: "$list.list_name"},
+    //     songs: {
+    //       $addToSet: {
+    //         $cond: {
+    //           if: { $gt: [ "$list.songs", {} ]},
+    //           then: "$list.songs",
+    //           else: "$noval"
+    //         }
+    //       }
+    //     }
+    //   }
+    // },
+    {  $group: {
         _id: "$_id._id",
         list: {
           $push: {
@@ -87,8 +119,9 @@ playlistSchema.methods.getUserPlaylists = async function(id) {
         }
       }
     },
-    // { $unwind: { path: "$list.songs", preserveNullAndEmptyArrays: true}}
   ]);
+
+  return result[0];
 }
 
 mongoose.model('playlists', playlistSchema);

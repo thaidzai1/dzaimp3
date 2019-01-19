@@ -40,6 +40,22 @@ class List extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    const { playlist } = this.props;
+    const { opening_list_id } = this.state;
+    if(this.props !== nextProps) {
+      if(opening_list_id !== null) {
+        let playlistIndex = playlist.list.indexOf(playlist.list.find(list => list._id === opening_list_id));
+        if(playlist.list[playlistIndex] !== nextProps.playlist.list[playlistIndex]) {
+          this.setState({list_songs: [...nextProps.playlist.list[playlistIndex].songs]});
+        }
+      }
+      return true;
+    }
+
+    return this.state !== nextState;
+  }
+
   showSongs = (songs, list_id) => {
     this.setState({
       open_list: true,
@@ -106,7 +122,7 @@ class List extends Component {
           <div className='header'>
             <FontAwesomeIcon icon={faChevronLeft} onClick={this.backToPlaylist}/>
             <FontAwesomeIcon icon={faPlayCircle}
-              onClick={() => startPlaylist(list_songs, opening_list_id)}
+              onClick={() => startPlaylist(list_songs, opening_list_id, 0, auth.user._id)}
               className='play-all'
             />
           </div>
@@ -114,7 +130,7 @@ class List extends Component {
             list_songs.map(
               (song, index) => <SongItem
                 key={index} song={song} songIndex={index} auth={auth} list_id={opening_list_id}
-                startPlaylist={songIndex => startPlaylist(list_songs, opening_list_id, songIndex)}
+                startPlaylist={songIndex => startPlaylist(list_songs, opening_list_id, songIndex, auth.user._id)}
                 removeSongFromPlaylist={removeSongFromPlaylist}
               />
             )

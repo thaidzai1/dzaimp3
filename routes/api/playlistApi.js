@@ -21,11 +21,19 @@ router.get('/playlist/:user_id', async (req, res) => {
   const { user_id } = req.params;
   // const playlist = await Playlist.findOne({user_id: user_id}).select('list -_id');
   const playlist = await Playlist().getUserPlaylists(user_id);
-  console.log(playlist[0]);
-  if(playlist[0].list.length === 1 && playlist[0].list[0]._id === undefined) {
-    playlist[0].list.pop();
+
+  if(playlist.list.length === 1 && playlist.list[0]._id === undefined) {
+    playlist.list.pop();
   }
-  return res.status(200).json(playlist[0]);
+  return res.status(200).json(playlist);
+})
+
+router.get('/playlist/:user_id/:playlist_id', async (req, res) => {
+  const { user_id, playlist_id } = req.params;
+
+  const playlist = await Playlist().getUserPlaylists(user_id, playlist_id);
+
+  return res.status(200).json(playlist);
 })
 
 router.put('/playlist/new/:user_id', async (req, res) => {
@@ -60,7 +68,7 @@ router.put('/playlist/addsong/:user_id/:list_id/:song_id',
     const playlist = await Playlist.findOne({user_id: user_id, "list._id": list_id}, {list: {$elemMatch: {_id: list_id}}});
 
     const song = await Song().findSongById(song_id);
-    playlist.list[0].songs.push(song_id);
+    playlist.list[0].songs.push({_id: song_id, added_at: Date.now()});
     await playlist.save();
     return res.status(200).json({song: song[0], list_id});
   }

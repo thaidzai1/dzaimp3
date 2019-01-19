@@ -2,6 +2,7 @@ import axios from 'axios'
 
 import {
   GET_USER_PLAYLIST,
+  GET_PLAYLIST,
   ADD_SONG_TO_PLAYLIST,
   REMOVE_SONG_FROM_PLAYLIST,
   CREATE_NEW_PLAYLIST,
@@ -10,13 +11,29 @@ import {
 
 export const getUserPlaylist = user_id => async dispatch => {
   const res = await axios.get(`/api/playlist/${user_id}`);
-  console.log(res);
+
   if(res.status === 200) {
     return dispatch({
       type: GET_USER_PLAYLIST,
       payload: res.data.list
     })
   }
+}
+
+export const getPlaylist = (user_id, playlist_id) => () => {
+  return new Promise(async function(resolve, reject) {
+    let res;
+    try {
+      res = await axios.get(`/api/playlist/${user_id}/${playlist_id}`);
+
+      if(res.status === 200) {
+        resolve(res.data);
+      }
+    }
+    catch(e) {
+      reject(e);
+    }
+  });
 }
 
 export const createPlaylist = (user_id, list_name) => async dispatch => {

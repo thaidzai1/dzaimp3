@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { AlbumDetail } from '../components'
 import Loader from '../HOC/Loader'
 import { getAlbumDetail, getAlbumSongs } from '../actions/albumActions'
+import { startPlaylist } from '../actions/playerActions'
 
 class AlbumDetailContainer extends Component {
   componentDidMount() {
@@ -14,12 +15,20 @@ class AlbumDetailContainer extends Component {
 
   render() {
     const { detail, songs } = this.props.album;
+    const { startPlaylist } = this.props;
+    
     return (
-      <AlbumDetail album={detail} songs={songs}/>
+      <AlbumDetail album={detail} songs={songs} startPlaylist={startPlaylist}/>
     )
   }
 }
 
 const mapStateToProps = ({ album }) => ({ album });
 
-export default connect(mapStateToProps, { getAlbumDetail, getAlbumSongs })(AlbumDetailContainer)
+export default connect(mapStateToProps, 
+  { 
+    getAlbumDetail, 
+    getAlbumSongs, 
+    startPlaylist 
+  }
+)(AlbumDetailContainer)

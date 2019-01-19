@@ -9,6 +9,7 @@ require('./models/Singer');
 require('./models/Album');
 require('./models/User');
 require('./models/playlist');
+require('./models/test');
 const keys = require('./config/keys');
 
 //connect to database mongodb
@@ -32,7 +33,10 @@ app.use(session({
     autoRemove: 'interval',
     autoRemoveInterval: 10,
   }) //store session in mongodb
-}))
+}));
+
+const data = require('./models/data');
+data.seedDB();
 
 //config passport
 app.use(passport.initialize());

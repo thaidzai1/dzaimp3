@@ -1,4 +1,4 @@
-let canvas, ctx, source, context, analyser, fbc_array, bars, bar_x, bar_width, bar_height;
+let canvas, ctx, source, context, analyser, fbc_array, bars, bar_x, bar_width, bar_height, bar_gradient;
 
 function initAnalyzer(audio) {
   context = new AudioContext(); // AudioContext object instance
@@ -10,9 +10,12 @@ function initAnalyzer(audio) {
   source.connect(analyser);
   analyser.connect(context.destination);
   frameLooper();
-  console.log('frame', {context, source, ctx, canvas, fbc_array, analyser, bar_x, bar_width, bar_height});
-  ctx.fillStyle = '#14bdf5'; // Color of the bars
-  bars = 200;
+  bar_gradient = ctx.createLinearGradient(0, 0, 0, 170);
+  bar_gradient.addColorStop(0, "blue");
+  bar_gradient.addColorStop(0.5, "white");
+  bar_gradient.addColorStop(1, "red");
+  ctx.fillStyle = bar_gradient; // Color of the bars
+  bars = 300;
 }
 
 function frameLooper() {
@@ -21,7 +24,7 @@ function frameLooper() {
   analyser.getByteFrequencyData(fbc_array);
   ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
   for (var i = 0; i < bars; i++) {
-    bar_x = i * 3;
+    bar_x = i * 2.5;
     bar_width = 2;
     bar_height = -(fbc_array[i] / 2);
     //  fillRect( x, y, width, height ) // Explanation of the parameters below

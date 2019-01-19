@@ -21,10 +21,15 @@ const Menu = props => {
         <li className='label'><Link to='/'><img src='/image/DzaiMp3.png' /></Link></li>
         <li><Link to='/' className='menu-item'>Home</Link></li>
         <li><Link to='/albums' className='menu-item'>Albums</Link></li>
-        <li><Link to='/hot' className='menu-item'>Hot 100</Link></li>
         <li><Link to='/myplaylist' className='menu-item'>My Playlists</Link></li>
-        <li><Link to='/song/213' className='menu-item'>Test Song</Link></li>
         { renderAuth() }
+        <li className="resp-icon">
+          <div id="nav-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </li>
       </ul>
     </div>
   )

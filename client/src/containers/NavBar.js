@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { NavBar } from '../components'
-import scrollBarPosition from '../util/detectScroll'
+import { scrollBarPosition, responsiveNavClickExpand } from '../util/detectScroll'
 
 class NavBarContainer extends Component {
   componentDidMount() {
-    let menu = document.getElementById('menu');
+    let menu = document.querySelector('#menu');
+    let navIcon = document.querySelector('#nav-icon');
     window.addEventListener("scroll", () => scrollBarPosition(menu));
+    navIcon.addEventListener("click", () => responsiveNavClickExpand(menu, navIcon));
   }
 
   render() {

@@ -10,6 +10,10 @@ class MainPage extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    console.log(this.props.playlist);
+  }
+
   render() {
     const { match, location, analyser } = this.props;
 
@@ -25,12 +29,13 @@ class MainPage extends Component {
           <Route path={`${match.path}`} exact component={Container.HomePageContainer}/>
           <Route path={`${match.path}song/:name/:id`} component={Container.SongContainer}/>
           <Route path={`${match.path}album/:name/:id`} component={Container.AlbumDetailContainer}/>
+          <Route path={`${match.path}playlist/:id-:user_id`} component={Container.Playlist} />
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ analyser }) => ({ analyser });
+const mapStateToProps = ({ analyser, playlist }) => ({ analyser, playlist });
 
 export default connect(mapStateToProps)(MainPage)

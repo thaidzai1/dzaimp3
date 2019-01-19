@@ -14,16 +14,17 @@ const BoxMusic = ({item, type='song', addToPlaylist}) => {
   return (
     <div className='item'>
       <Link to={`/${type}/${item.name}/${item._id}`}>
-        <div className='poster' style={{backgroundImage: `url(/image/poster/${item.poster})`}}>
+        <div className='poster'>
+          <img src={`/image/poster/${item.poster}`} />
           <FontAwesomeIcon icon={faInfoCircle} className='detail-icon'/>
           <FontAwesomeIcon icon={faPlayCircle} className='play-icon'/>
         </div>
+      </Link>
         <div className='describe'>
           <h3><span><FontAwesomeIcon icon={faMusic}/></span> {item.name}</h3>
+          <h3><span><FontAwesomeIcon icon={faMicrophone}/></span> {item.singer.name}</h3>
         </div>
-      </Link>
       <div className='invi-desc'>
-        <h3><span><FontAwesomeIcon icon={faMicrophone}/></span> {item.singer.name}</h3>
         <div className='item-options'>
           {
             type === 'song' ? <FontAwesomeIcon icon={faFolderPlus} className='add-playlist'

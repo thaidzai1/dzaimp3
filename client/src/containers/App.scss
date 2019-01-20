@@ -3,12 +3,12 @@
   margin: 0;
   padding: 0;
 }
+html {
+  height: 100vh;
+}
 body {
   background-color: #f2f2f2;
   font-family: 'Barlow Condensed', sans-serif;
-  .main-page {
-    height: 100vh;
-  }
   .main-body {
     width: 80%;
     margin: 50px auto 0px auto;

@@ -3,6 +3,7 @@ import NavBar from './NavBar'
 import FloatPlayer from './FloatPlayer'
 import SongContainer from './Song'
 import AlbumDetailContainer from './AlbumDetail'
+import AlbumListen from './AlbumListen'
 import Playlist from './PlaylistContainer'
 
 export {
@@ -11,5 +12,6 @@ export {
   FloatPlayer,
   SongContainer,
   AlbumDetailContainer,
-  Playlist
+  Playlist,
+  AlbumListen
 }

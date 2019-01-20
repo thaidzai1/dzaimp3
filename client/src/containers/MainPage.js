@@ -29,6 +29,7 @@ class MainPage extends Component {
           <Route path={`${match.path}`} exact component={Container.HomePageContainer}/>
           <Route path={`${match.path}song/:name/:id`} component={Container.SongContainer}/>
           <Route path={`${match.path}album/:name/:id`} component={Container.AlbumDetailContainer}/>
+          <Route path={`${match.path}album/listen=:id`} component={Container.AlbumListen} />
           <Route path={`${match.path}playlist/:id-:user_id`} component={Container.Playlist} />
         </div>
       </div>

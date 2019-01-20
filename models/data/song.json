@@ -51,8 +51,120 @@
         "songName": "Lily",
         "poster": "Lily.jpg",
         "audio": "Lily.mp3",
-        "song_image": "Lily.jpg",
+        "song_image": "Lily-AlanWalker.png",
         "album_id": 3,
         "singer_id": "4"
+    },
+    {
+        "songName": "Different World",
+        "poster": "DifferentWorld.jpg",
+        "audio": "DifferentWorld.mp3",
+        "song_image": "DifferentWorld-AlanWalker.jpg",
+        "album_id": 3,
+        "singer_id": "4"
+    },
+    {
+        "songName": "All Falls Down",
+        "poster": "AllFallsDown.jpg",
+        "audio": "AllFallsDown.mp3",
+        "song_image": "AllFallsDown-AlanWalker.jpg",
+        "album_id": 3,
+        "singer_id": "4"
+    },
+    {
+        "songName": "Darkside",
+        "poster": "Darkside.jpg",
+        "audio": "Darkside.mp3",
+        "song_image": "Darkside-AlanWalker.jpg",
+        "album_id": 3,
+        "singer_id": "4"
+    },
+    {
+        "songName": "Sing Me To Sleep",
+        "poster": "SingMeToSleep.jpg",
+        "audio": "SingMeToSleep.mp3",
+        "song_image": "SingMeToSleep-AlanWalker.jpg",
+        "album_id": 3,
+        "singer_id": "4"
+    },
+    {
+        "songName": "Faded",
+        "poster": "Faded.jpg",
+        "audio": "Faded.mp3",
+        "song_image": "Faded-AlanWalker.jpg",
+        "album_id": 3,
+        "singer_id": "4"
+    },
+    {
+        "songName": "Diamond Heart",
+        "poster": "DiamondHeart.jpg",
+        "audio": "DiamondHeart.mp3",
+        "song_image": "DiamondHeart-AlanWalker.jpg",
+        "album_id": 3,
+        "singer_id": "4"
+    },
+    {
+        "songName": "Bad Liar",
+        "poster": "BadLiar.jpg",
+        "audio": "BadLiar.mp3",
+        "song_image": "BadLiar.jpg",
+        "album_id": 9,
+        "singer_id": "7"
+    },
+    {
+        "songName": "Radioactive",
+        "poster": "Radioactive.jpg",
+        "audio": "Radioactive.mp3",
+        "song_image": "Radioactive.jpg",
+        "album_id": 9,
+        "singer_id": "7"
+    },
+    {
+        "songName": "Demons",
+        "poster": "Demons.jpg",
+        "audio": "Demons.mp3",
+        "song_image": "Demons.jpg",
+        "album_id": 9,
+        "singer_id": "7"
+    },
+    {
+        "songName": "Thunder",
+        "poster": "Thunder.jpg",
+        "audio": "Thunder.mp3",
+        "song_image": "Thunder.jpg",
+        "album_id": 9,
+        "singer_id": "7"
+    },
+    {
+        "songName": "Sucker For Pain",
+        "poster": "SuckerForPain.jpg",
+        "audio": "SuckerForPain.mp3",
+        "song_image": "SuckerForPain.png",
+        "album_id": 9,
+        "singer_id": "7"
+    },
+    {
+        "songName": "Believer",
+        "poster": "Believer.jpg",
+        "audio": "Believer.mp3",
+        "song_image": "Believer.jpg",
+        "album_id": 9,
+        "singer_id": "7"
+    },
+    {
+        "songName": "What Ever It Takes",
+        "poster": "WhatEverItTakes.jpg",
+        "audio": "WhatEverItTakes.mp3",
+        "song_image": "WhatEverItTakes.jpg",
+        "album_id": 9,
+        "singer_id": "7"
+    },
+    {
+        "songName": "Natural",
+        "poster": "Natural.jpg",
+        "audio": "Natural.mp3",
+        "song_image": "Natural.jpg",
+        "album_id": 9,
+        "singer_id": "7"
     }
 ]

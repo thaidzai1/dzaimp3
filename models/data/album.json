@@ -15,13 +15,13 @@
         "id": 3,
         "singer_id": 4,
         "name": "Different World",
-        "poster": "DifferentWorld.jpg"
+        "poster": "DifferentWorld-album.jpg"
     },
     {
         "id": 4,
         "singer_id": 3,
         "name": "Red Pill Blue",
-        "poster": "RedPillBlue.jpg"
+        "poster": "RedPillBLue.jpg"
     },
     {
         "id": 5,
@@ -33,7 +33,7 @@
         "id": 6,
         "singer_id": 5,
         "name": "So Far Away",
-        "poster": "sofaraway.jpg"
+        "poster": "so-far-away-album.jpg"
     },
     {
         "id": 7,
@@ -46,5 +46,11 @@
         "singer_id": 2,
         "name": "As If It's Your Last",
         "poster": "asifitsyourlast.jpg"
+    },
+    {
+        "id": 9,
+        "singer_id": 7,
+        "name": "Imagine Dragon's choice",
+        "poster": "ImagineDragonChoice.jpg"
     }
 ]

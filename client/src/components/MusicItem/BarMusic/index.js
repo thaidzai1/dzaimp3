@@ -19,7 +19,7 @@ const BarMusic = ({ index, item, Play }) => {
   return (
     <div className={barMusicClass.join(' ')}>
       <img src={`/image/poster/${item.poster}`} className='music-img'/>
-      <p className='song-info'>{item.name} <span>{item.singer.name}</span></p>
+      <p className='song-info'>{item.name} - <span>{item.singer.name}</span></p>
       <div className='options'>
         <FontAwesomeIcon icon={faHeart} className='btn-heart'/>
         <FontAwesomeIcon icon={faPlay} className='btn-play' onClick={() => Play(index)}/>

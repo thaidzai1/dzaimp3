@@ -10,6 +10,7 @@ export const getCurrentUser = () => async dispatch => {
       payload: res.data
     })
   }
+  return dispatch({});
 }
 
 export const Login = user => async dispatch => {

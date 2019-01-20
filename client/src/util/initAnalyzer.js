@@ -12,10 +12,12 @@ function initAnalyzer(audio) {
   frameLooper();
   bar_gradient = ctx.createLinearGradient(0, 0, 0, 170);
   bar_gradient.addColorStop(0, "blue");
+  bar_gradient.addColorStop(0.25, "#2cb5e8");
   bar_gradient.addColorStop(0.5, "white");
+  bar_gradient.addColorStop(0.75, "#f7932d");
   bar_gradient.addColorStop(1, "red");
   ctx.fillStyle = bar_gradient; // Color of the bars
-  bars = 300;
+  bars = 200;
 }
 
 function frameLooper() {

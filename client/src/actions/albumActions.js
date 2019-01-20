@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import { GET_NEW_ALBUMS, GET_ALBUM_DETAIL, GET_ALBUM_SONGS } from './types'
+import { resolve } from 'url';
 
 export const getNewAlbums = () => async dispatch => {
   let res;
@@ -44,4 +45,20 @@ export const getAlbumSongs = album_id => async dispatch => {
   catch(err) {
     console.log(err);
   }
+}
+
+export const getSongInAlbum = album_id => {
+  console.log(album_id);
+  return new Promise(async function(resolve, reject) {
+    let res;
+    try {
+      res = await axios.get( `/api/album/song/${album_id}`);
+      if(res.status === 200) {
+        resolve(res.data);
+      }
+    }
+    catch(e) {
+      reject(e);
+    }
+  });
 }

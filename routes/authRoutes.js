@@ -24,6 +24,8 @@ router.get('/current_user', (req, res) => {
   if(req.user){
     return res.status(200).json(req.user);
   }
+
+  return res.status(404).json();
 })
 
 router.post('/signup', async (req, res) => {

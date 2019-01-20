@@ -18,11 +18,20 @@ const ExpandFloat = props => {
   const renderSongInfo = () => {
     if(player !== null) {
       if(player.playlist !== null){
-        return (
-          <Link to={`/playlist/${player._id}-${player.user_list}`}>
-            {player.song.songName}
-          </Link> 
-        )
+        if(player.user_list){
+          return (
+            <Link to={`/playlist/${player._id}-${player.user_list}`}>
+              {player.song.songName}
+            </Link> 
+          );
+        }
+        else {
+          return (
+            <Link to={`/album/listen=${player._id}`}>
+              {player.song.songName}
+            </Link> 
+          )
+        }
       }
       else {
         return (

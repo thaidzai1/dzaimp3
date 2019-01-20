@@ -28,5 +28,10 @@
         "id": 6,
         "name": "Bolbbalgan 4",
         "nationality": "Korean"
+    },
+    {
+        "id": 7,
+        "name": "Imagine Dragon",
+        "nationality": "American"
     }
 ]

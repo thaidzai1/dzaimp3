@@ -1,11 +1,13 @@
 $float-position-top: 40px;
 $float-position-left: 20px;
-.float-music {
-  position: fixed;
-  z-index: 99;
+// .float-music {
+  // position: fixed;
+  // z-index: 99;
   .fab-music {
     transition: all 0.5s ease;
     position: absolute;
+    position: fixed;
+    z-index: 99;
     bottom: $float-position-top;
     left: $float-position-left;
     background-color: white;
@@ -276,7 +278,7 @@ $float-position-left: 20px;
       }
     }
   }
-}
+// }
 
 @keyframes disc_rotate {
   0% {

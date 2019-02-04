@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import './index.scss'
 
 const Analyser = ({show}) => {
-  console.log('analyse mount');
   return (
     <canvas id='analyser_render' style={{display: show ? 'block' : 'none'}}></canvas>
   )

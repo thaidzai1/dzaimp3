@@ -49,8 +49,6 @@ const ExpandFloat = props => {
   }
   
   const handleFillBarClick = (e) => {
-    console.log('click', e.offsetX, e.target.clientWidth, e);
-    console.log('percent', e.offsetX/e.target.clientWidth);
     if(player) {
       let { song } = player;
       song.audio.currentTime = e.offsetX/e.target.clientWidth * song.audio.duration;
@@ -60,7 +58,10 @@ const ExpandFloat = props => {
   return (
     <div className='expand-holder'>
       <div className='song-details'>
-        <div className='song-image'></div>
+        {/* <div className='song-image'>
+          
+        </div> */}
+        <img src={player ? `/image/poster/${player.song.poster}` : null} />
         <h2>
           {renderSongInfo()}
         </h2>

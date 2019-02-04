@@ -52,10 +52,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('/image/login-bg1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background: -moz-linear-gradient(top, #29b8e5 0%, #b3dced 51%, #29b8e5 99%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #29b8e5 0%,#b3dced 51%,#29b8e5 99%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #29b8e5 0%,#b3dced 51%,#29b8e5 99%);
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -74,7 +73,7 @@
   }
   .redirect {
     opacity: 0.4;
-    transform: translate(0, 600px);
+    transform: translate(0, 100vh);
   }
   .auth-header {
     text-align: center;

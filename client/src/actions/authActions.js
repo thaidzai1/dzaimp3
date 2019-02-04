@@ -3,14 +3,18 @@ import axios from 'axios'
 import { GET_CURRENT_USER, SIGN_UP, LOGIN } from './types'
 
 export const getCurrentUser = () => async dispatch => {
-  const res = await axios.get('/auth/current_user');
-  if(res.status === 200){
-    return dispatch ({
-      type: GET_CURRENT_USER,
-      payload: res.data
-    })
+  let res;
+  try {
+    res = await axios.get('/auth/current_user');
+    if(res.status === 200){
+      return dispatch ({
+        type: GET_CURRENT_USER,
+        payload: res.data
+      })
+    }
   }
-  return dispatch({});
+  catch(e) {
+  }
 }
 
 export const Login = user => async dispatch => {

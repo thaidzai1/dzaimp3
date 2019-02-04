@@ -18,7 +18,6 @@ class SignupPage extends Component {
   }
 
   goToLoginPage = event => {
-    console.log(this.signUpForm);
     this.signUpForm.current.className += ' redirect';
     event.preventDefault();
     setTimeout(() => {

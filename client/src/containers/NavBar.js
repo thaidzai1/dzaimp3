@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 
 import { NavBar } from '../components'
 import { scrollBarPosition, responsiveNavClickExpand } from '../util/detectScroll'
+import { getSearchResult } from '../actions/searchActions'
+import { getSongAudio } from '../actions/playerActions'
 
 class NavBarContainer extends Component {
   componentDidMount() {
@@ -12,15 +14,18 @@ class NavBarContainer extends Component {
     navIcon.addEventListener("click", () => responsiveNavClickExpand(menu, navIcon));
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps !== this.props;
+  }
+
   render() {
     const { auth } = this.props;
-
     return (
-      <NavBar auth={auth} />
+      <NavBar {...this.props} />
     )
   }
 }
 
-const mapStateToProps = ({ auth }) => ({ auth })
+const mapStateToProps = ({ auth, search }) => ({ auth, search })
 
-export default connect(mapStateToProps)(NavBarContainer)
+export default connect(mapStateToProps, { getSearchResult, getSongAudio })(NavBarContainer)

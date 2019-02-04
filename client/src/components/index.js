@@ -5,6 +5,8 @@ import HomePage from './HomePage'
 import Song from './Song'
 import Analyser from './Analyser'
 import AlbumDetail from './AlbumDetail'
+import PageAll from './PageAll'
+import Loading from './Loader'
 
 export {
   AuthPage,
@@ -13,5 +15,7 @@ export {
   HomePage,
   Song,
   Analyser,
-  AlbumDetail
+  AlbumDetail,
+  PageAll,
+  Loading
 }

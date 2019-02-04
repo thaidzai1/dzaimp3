@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import NewSongItem from './NewSongItem'
 import NewAlbumItem from './NewAlbumItem'
 import Modal from '../Modal'
-import AddPlaylistModalItem from './AddPlaylistModalItem'
+import AddPlaylistModalItem from '../Modal/AddPlaylistModalItem'
 import Loader from '../../HOC/Loader'
 import './index.scss'
 
@@ -79,7 +79,10 @@ class HomePage extends Component {
             }
           </div>
         </div>
-        <div className='hightlight'></div>
+        <div className='hightlight'>
+            <img src="/image/keepcalm.jpg" />
+            <img src="/image/keepcalmkpop.jpg" />
+        </div>
       </div>
     )
   }

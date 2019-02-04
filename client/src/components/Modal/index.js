@@ -3,52 +3,51 @@ import PropTypes from 'prop-types'
 
 import './index.scss'
 
-const InnerModal = ({toggleModal, body}) => {
+const InnerModal = ({ body, isOpen}) => {
   return (
-    <div className='modal'>
+    <>
       <div className='option'>
-        <div className='close' onClick={() => toggleModal()}>&#10005;</div>
+        <div className='close'>&#10005;</div>
       </div>
       <div className='body'>
         {body}
       </div>
-    </div>
+    </>
   )
 }
 
 class Modal extends Component {
-  constructor(props) {
-    super(props);
-
-    this.modalLayer = React.createRef();
-  }
   componentDidMount() {
-    const modalLayer = document.getElementById('modal-layer');
-    modalLayer.addEventListener('click', this.handleCloseModal);
+    this.modalLayer.addEventListener('click', this.handleCloseModal)
   }
 
   handleCloseModal = e => {
-    if(e.target.classList[0] === 'modal-layer') {
-      this.props.toggleModal();
+    if(e.target.classList[0] === 'modal-layer' || e.target.classList[0] === "close") {
+      this.modal.classList.add("close");
+      setTimeout(() => {
+        this.modal.classList.remove("close");
+        this.props.toggleModal();
+      }, 200);
     }
   }
 
   render() {
     const { isOpen, toggleModal, children: body} = this.props;
     if(isOpen) {
-      // return (
-      //   <div className='modal-layer modal-isOpen' id='modal-layer'>
-      //     <InnerModal isOpen={isOpen} body={body} toggleModal={toggleModal}/>
-      //   </div>
-      // )
-      this.modalLayer.current.classList.add('modal-isOpen');
+      this.modalLayer.classList.add('modal-isOpen');
     }
-    else if(this.modalLayer.current) {
-      this.modalLayer.current.classList.remove('modal-isOpen');
+    else if(this.modalLayer) {
+      this.modalLayer.classList.remove('modal-isOpen');
     }
     return (
-      <div className='modal-layer' id='modal-layer' ref={this.modalLayer}>
-        <InnerModal isOpen={isOpen} body={body} toggleModal={toggleModal}/>
+      <div className='modal-layer' ref={elm => this.modalLayer = elm}>
+      {
+        isOpen ? (
+          <div className='modal' ref={elm => this.modal = elm}>
+            <InnerModal isOpen={isOpen} body={body} />
+          </div>
+        ) : null
+      }
       </div>
     )
   }

@@ -4,6 +4,8 @@ import {
   GET_SONG_AUDIO, START_PLAYLIST, PLAYLIST_QUEUE_NEXT, UPDATE_PLAYER_PLAYLIST, PLAYLIST_QUEUE_PREVIOUS
  } from './types'
 
+import { handleSearch } from './uiActions'
+
  //This will save the playlist is being played in player
  //Reason for this: user can delete, add songs while playing that playlist
  //So we can update the list and next song and previous song.
@@ -17,7 +19,7 @@ const initalPlayer = {
 //Just use to create a song audio
 export const getSongAudio= song_id => async dispatch => {
   const res = await axios.get(`/api/song/${song_id}`);
-
+  dispatch(handleSearch());
   let audio = new Audio();
   audio.src = `/audio/${res.data.audio}`;
   // audio.autoplay = true;

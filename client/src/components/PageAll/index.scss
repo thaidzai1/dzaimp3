@@ -1,0 +1,12 @@
+.page-all {
+    display: flex;
+    flex-flow: wrap;
+    .item-container {
+        margin: 0 10px;
+    }
+    .loader-holder {
+        position: relative;
+        width: 100%;
+        height: 100px;
+    }
+}

@@ -65,7 +65,7 @@ songSchema.methods.findSongById = async function(song_id) {
   return song;
 }
 
-songSchema.methods.getSongs = async function(limit=null, sort=1, sortDocument='created_at') {
+songSchema.methods.getSongs = async function(limit=null, sort=1, sortDocument='created_at', skip=0) {
   if(!limit) {
     limit = await this.model('songs').count();
   }
@@ -97,8 +97,9 @@ songSchema.methods.getSongs = async function(limit=null, sort=1, sortDocument='c
         as: "album"
       }
     },
-    { $unwind: "$album"},
     { $sort: sortQuery},
+    { $skip: skip},
+    { $unwind: "$album"},
     { $limit: limit}
   ]);
 

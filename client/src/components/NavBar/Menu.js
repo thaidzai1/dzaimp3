@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Menu = props => {
-  const {auth} = props;
+import SearchBox from '../SearchBox'
+
+const Menu = ({auth, search, getSearchResult, getSongAudio}) => {
   const renderAuth = () => {
     if(auth === null){
       return [
@@ -15,13 +16,15 @@ const Menu = props => {
       </li>
     ]
   }
+
   return (
     <div className='menu' id='menu'>
       <ul>
         <li className='label'><Link to='/'><img src='/image/DzaiMp3.png' /></Link></li>
         <li><Link to='/' className='menu-item'>Home</Link></li>
-        <li><Link to='/albums' className='menu-item'>Albums</Link></li>
+        <li><Link to='/songs' className='menu-item'>Songs</Link></li>
         <li><Link to='/myplaylist' className='menu-item'>My Playlists</Link></li>
+        <SearchBox handleSearch={getSearchResult} search={search} getSongAudio={getSongAudio}/>
         { renderAuth() }
         <li className="resp-icon">
           <div id="nav-icon">

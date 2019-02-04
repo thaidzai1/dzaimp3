@@ -6,6 +6,12 @@ import { hideShowAnalyser } from '../actions/analyserActions'
 import { Song } from '../components'
 
 class SongContainer extends Component {
+
+  componentWillMount() {
+    console.log('will')
+    window.scrollTo(0, 0);
+  }
+  
   componentDidMount() {
     const { player, match, getSongAudio, hideShowAnalyser } = this.props;
     if(player !== null){

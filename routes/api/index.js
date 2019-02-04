@@ -3,6 +3,7 @@ module.exports = app => {
     require('./songApi'),
     require('./playlistApi'),
     require('./singerApi'),
-    require('./albumApi')
+    require('./albumApi'),
+    require('./searchApi')
   );
 }

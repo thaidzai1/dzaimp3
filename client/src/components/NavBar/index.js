@@ -6,19 +6,14 @@ import Menu from './Menu'
 import Caption from './Caption'
 import './index.scss'
 
-class NavBar extends Component {
-
-  render() {
-    const { auth } = this.props;
-
-    return (
-      <div className='navbar'>
-        <Slider />
-        <Menu auth={ auth } />
-        <Caption />
-      </div>
-    )
-  }
+const NavBar = (props) => {
+  return (
+    <div className='navbar'>
+      <Slider />
+      <Menu {...props} />
+      <Caption />
+    </div>
+  )
 }
 
 export default NavBar

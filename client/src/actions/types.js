@@ -10,8 +10,10 @@ export const START_PLAYLIST = 'START_PLAYLIST';
 export const PLAYLIST_QUEUE_NEXT = 'PLAYLIST_QUEUE_NEXT';
 export const PLAYLIST_QUEUE_PREVIOUS = 'PLAYLIST_QUEUE_PREVIOUS';
 
-//homepage
+//song
 export const GET_NEW_SONGS = 'GET_NEW_SONGS';
+export const GET_SONG_PAGING = 'GET_SONG_PAGING';
+export const FETCH_SONG_SCROLL = 'FETCH_SONG_SCROLL';
 
 //playList
 export const GET_USER_PLAYLIST = 'GET_USER_PLAYLIST';
@@ -25,3 +27,9 @@ export const REMOVE_SONG_FROM_PLAYLIST = 'REMOVE_SONG_FROM_PLAYLIST';
 export const GET_NEW_ALBUMS = 'GET_NEW_ALBUMS';
 export const GET_ALBUM_DETAIL = 'GET_ALBUM_DETAIL';
 export const GET_ALBUM_SONGS = 'GET_ALBUM_SONGS';
+
+//UI
+export const UI_SEARCHING = 'UI_SEARCHING';
+
+//search 
+export const SEARCH = 'SEARCH';

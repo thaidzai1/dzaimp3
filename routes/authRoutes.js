@@ -35,7 +35,9 @@ router.post('/signup', async (req, res) => {
     if(existedUser.password === null) {
       existedUser.password = await existedUser.hashPassword(password);
       existedUser.save();
-      return res.status(200).json(null);
+      return res.status(200).json({
+        message: 'account create successfully'
+      });
     }
     else {
       return res.status(200).json({

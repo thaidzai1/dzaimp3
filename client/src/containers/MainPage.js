@@ -10,26 +10,24 @@ class MainPage extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    console.log(this.props.playlist);
-  }
-
   render() {
     const { match, location, analyser } = this.props;
 
     if(location.pathname === '/login' || location.pathname === '/signup'){
       return null;
     }
+    
     return (
       <div className='main-page'>
         <Container.NavBar />
         <Container.FloatPlayer />
-        <Analyser show={analyser.show}/>
         <div className='main-body'>
+          <Analyser show={analyser.show}/>
           <Route path={`${match.path}`} exact component={Container.HomePageContainer}/>
           <Route path={`${match.path}song/:name/:id`} component={Container.SongContainer}/>
           <Route path={`${match.path}album/:name/:id`} component={Container.AlbumDetailContainer}/>
           <Route path={`${match.path}album/listen=:id`} component={Container.AlbumListen} />
+          <Route path={`${match.path}songs`} component={Container.PageAllContainer} />
           <Route path={`${match.path}playlist/:id-:user_id`} component={Container.Playlist} />
         </div>
       </div>

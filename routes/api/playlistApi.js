@@ -56,7 +56,7 @@ router.put('/playlist/delete/:user_id/:list_id', async (req, res) => {
       playlist.list.splice(index, 1);
     }
   })
-  // await playlist.save();
+  await playlist.save();
   return res.status(200).json();
 })
 

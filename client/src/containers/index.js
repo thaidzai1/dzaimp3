@@ -5,6 +5,7 @@ import SongContainer from './Song'
 import AlbumDetailContainer from './AlbumDetail'
 import AlbumListen from './AlbumListen'
 import Playlist from './PlaylistContainer'
+import PageAllContainer from './PageAllContainer'
 
 export {
   HomePageContainer,
@@ -13,5 +14,6 @@ export {
   SongContainer,
   AlbumDetailContainer,
   Playlist,
-  AlbumListen
+  AlbumListen,
+  PageAllContainer
 }

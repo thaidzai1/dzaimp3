@@ -1,8 +1,7 @@
 import { GET_NEW_ALBUMS, GET_ALBUM_DETAIL, GET_ALBUM_SONGS } from '../actions/types'
 
 const initialState = {
-  newAlbums: [],
-  songs: []
+  newAlbums: []
 };
 
 export default function(state = initialState, action) {

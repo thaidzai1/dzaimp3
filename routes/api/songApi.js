@@ -91,10 +91,16 @@ router.put('/song/:id', songMiddleware.createSong, async (req, res) => {
 
 router.get('/allsongs/:page_num', async (req, res) => {
   const { page_num } = req.params;
-  console.log(page_num);
-  let songs = await Song.find({}).sort({created_at: -1}).skip(2*(page_num-1)).limit(2);
+  let songEachPage = 12;
+  let songs = await Song().getSongs(songEachPage, -1, 'created_at', songEachPage*(page_num -1));
+  let songQuantity = await Song.count({});
 
-  return res.status(200).json(songs);
+  return res.status(200).json({songs, songQuantity});
+})
+
+router.get('/test', async (req, res) => {
+  let songs = await Song().getSongs(10, -1);
+  return res.json(songs);
 })
 
 module.exports = router;

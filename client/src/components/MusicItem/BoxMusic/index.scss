@@ -22,7 +22,7 @@
       transform: scale(2);
       z-index: 1;
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: 0.5s ease;
     }
     .detail-icon {
       top: 0;
@@ -73,6 +73,7 @@
       text-align: center;
       .add-playlist {
         margin-right: 10px;
+        cursor: pointer;
       }
       .heart {
       }

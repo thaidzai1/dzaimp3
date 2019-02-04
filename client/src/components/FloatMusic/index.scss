@@ -1,6 +1,6 @@
 $float-position-top: 40px;
 $float-position-left: 20px;
-// .float-music {
+.float-music {
   // position: fixed;
   // z-index: 99;
   .fab-music {
@@ -25,12 +25,12 @@ $float-position-left: 20px;
       width: 50px;
     }
   }
-  .expand {
+  .fab-music.expand {
     width: 100vw;
     left: 0 !important;
     bottom: 0;
-    height: 80px;
     padding:0 20px;
+    border-radius: 0px;
     .expand-holder {
       display: flex;
       width:100%;
@@ -278,7 +278,7 @@ $float-position-left: 20px;
       }
     }
   }
-// }
+}
 
 @keyframes disc_rotate {
   0% {
@@ -286,5 +286,34 @@ $float-position-left: 20px;
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .float-music {
+    .fab-music.expand {
+      height: 100vh;
+      .expand-holder {
+        display: block;
+        .song-details {
+          flex-direction: column;
+          margin-bottom: 20px;
+        }
+        .options {
+          display: block;
+          .button, .seek-bar, .play-list, .close {
+            margin: 20px 0;
+          }
+          .playlist {
+            .box-list {
+              top: 60vh;
+              left: 0px;
+              width: 100vw;
+              height: 40vh;
+            }
+          }
+        }
+      }
+    }
   }
 }

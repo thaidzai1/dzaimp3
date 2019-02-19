@@ -48,10 +48,11 @@ const ExpandFloat = props => {
     )
   }
   
-  const handleFillBarClick = (e) => {
-    if(player) {
+  const handleFillBarClick = e => {
+    console.log(e.nativeEvent.offsetX, e.target);
+    if(player && (e.target.classList.contains('seek-bar') || e.target.classList.contains('fill'))) {
       let { song } = player;
-      song.audio.currentTime = e.offsetX/e.target.clientWidth * song.audio.duration;
+      song.audio.currentTime = e.nativeEvent.offsetX/e.currentTarget.clientWidth * song.audio.duration;
     }
   } 
 
@@ -77,7 +78,7 @@ const ExpandFloat = props => {
           </button>
           <button><FontAwesomeIcon icon={faFastForward} onClick={player && player.playlist ? playlistAutoNext : null} /></button>
         </div>
-        <div className='seek-bar' onClick={() => handleFillBarClick(event)}>
+        <div className='seek-bar' onClick={event => handleFillBarClick(event)}>
           <div className='fill' id='fill-bar'></div>
           <div className='handle'></div>
         </div>

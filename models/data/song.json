@@ -13,7 +13,8 @@
         "audio": "Hann.mp3",
         "song_image": "Hann.jpg",
         "album_id": 2,
-        "singer_id": "1"
+        "singer_id": "1",
+        "lyric": "https://mp3.zing.vn/bai-hat/HANN--Alone--G-I-DLE/ZW9DUCI9.html"
     },
     {
         "songName": "Girl like you",
@@ -29,12 +30,22 @@
         "audio": "So Far Away.mp3",
         "song_image": "SoFarAway.jpg",
         "album_id": 6,
-        "singer_id": "5"
+        "singer_id": "5",
+        "lyric": "https://mp3.zing.vn/bai-hat/So-Far-Away-Martin-Garrix-David-Guetta-Jamie-Scott-Romy/ZW8WAW9B.html"
     },
     {
         "songName": "DDuDU-DDuDu",
         "poster": "ddududdudu.jpg",
         "audio": "DDU-DU_DDU-DU.mp3",
+        "song_image": "ddududdudu.jpg",
+        "album_id": 7,
+        "singer_id": "2",
+        "lyric": "https://mp3.zing.vn/bai-hat/DDU-DU-DDU-DU-Black-Pink/ZW9C9AZ0.html"
+    },
+    {
+        "songName": "Forever young",
+        "poster": "foreveryoung.jpg",
+        "audio": "FOREVER YOUNG.mp3",
         "song_image": "ddududdudu.jpg",
         "album_id": 7,
         "singer_id": "2"
@@ -45,6 +56,15 @@
         "audio": "AS IF ITS YOUR LAST.mp3",
         "song_image": "asifitsyourlast.jpg",
         "album_id": 8,
+        "singer_id": "2",
+        "lyric": "https://mp3.zing.vn/bai-hat/As-If-It-s-Your-Last-Black-Pink/ZW80OA6B.html"
+    },
+    {
+        "songName": "Playing with fire",
+        "poster": "playingwithfire.jpg",
+        "audio": "PLAYING WITH FIRE.mp3",
+        "song_image": "playingwithfire.jpg",
+        "album_id": 8,
         "singer_id": "2"
     },
     {
@@ -53,7 +73,8 @@
         "audio": "Lily.mp3",
         "song_image": "Lily-AlanWalker.png",
         "album_id": 3,
-        "singer_id": "4"
+        "singer_id": "4",
+        "lyric": "https://mp3.zing.vn/bai-hat/Lily-Alan-Walker-K-391-Emelie-Hollow/ZWA0OA6F.html"
     },
     {
         "songName": "Different World",
@@ -61,7 +82,8 @@
         "audio": "DifferentWorld.mp3",
         "song_image": "DifferentWorld-AlanWalker.jpg",
         "album_id": 3,
-        "singer_id": "4"
+        "singer_id": "4",
+        "lyric": "https://mp3.zing.vn/bai-hat/Different-World-Alan-Walker-K-391-Sofia-Carson-CORSAK/ZW9F897F.html"
     },
     {
         "songName": "All Falls Down",
@@ -69,7 +91,8 @@
         "audio": "AllFallsDown.mp3",
         "song_image": "AllFallsDown-AlanWalker.jpg",
         "album_id": 3,
-        "singer_id": "4"
+        "singer_id": "4",
+        "lyric": "https://mp3.zing.vn/bai-hat/All-Falls-Down-Alan-Walker-Noah-Cyrus-Digital-Farm-Animals/ZW8WOI6U.html"
     },
     {
         "songName": "Darkside",
@@ -77,7 +100,8 @@
         "audio": "Darkside.mp3",
         "song_image": "Darkside-AlanWalker.jpg",
         "album_id": 3,
-        "singer_id": "4"
+        "singer_id": "4",
+        "lyric": "https://mp3.zing.vn/bai-hat/DarksideAlan-Walker-Au-Ra-Tomine-Harket/ZW9DIZ68.html"
     },
     {
         "songName": "Sing Me To Sleep",
@@ -85,7 +109,8 @@
         "audio": "SingMeToSleep.mp3",
         "song_image": "SingMeToSleep-AlanWalker.jpg",
         "album_id": 3,
-        "singer_id": "4"
+        "singer_id": "4",
+        "lyric": "https://mp3.zing.vn/bai-hat/Sing-Me-To-SleepAlan-Walker/ZW7U8679.html"
     },
     {
         "songName": "Faded",
@@ -93,7 +118,8 @@
         "audio": "Faded.mp3",
         "song_image": "Faded-AlanWalker.jpg",
         "album_id": 3,
-        "singer_id": "4"
+        "singer_id": "4",
+        "lyric": "https://mp3.zing.vn/bai-hat/FadedAlan-Walker/ZW7O8OI9.html"
     },
     {
         "songName": "Diamond Heart",
@@ -101,7 +127,8 @@
         "audio": "DiamondHeart.mp3",
         "song_image": "DiamondHeart-AlanWalker.jpg",
         "album_id": 3,
-        "singer_id": "4"
+        "singer_id": "4",
+        "lyric": "https://mp3.zing.vn/bai-hat/Diamond-HeartAlan-Walker-Sophia-Somajo/ZW9DD9D8.html"
     },
     {
         "songName": "Bad Liar",
@@ -126,6 +153,7 @@
         "song_image": "Demons.jpg",
         "album_id": 9,
         "singer_id": "7"
+
     },
     {
         "songName": "Thunder",
@@ -141,7 +169,9 @@
         "audio": "SuckerForPain.mp3",
         "song_image": "SuckerForPain.png",
         "album_id": 9,
-        "singer_id": "7"
+        "singer_id": "7",
+        "lyric": "https://mp3.zing.vn/bai-hat/Sucker-For-PainLil-Wayne-Wiz-Khalifa-Imagine-Dragons-Logic-Ty-Dolla--ign-X-Ambassadors/ZW7UBBWF.html"
+
     },
     {
         "songName": "Believer",
@@ -166,5 +196,77 @@
         "song_image": "Natural.jpg",
         "album_id": 9,
         "singer_id": "7"
+    },
+    {
+        "songName": "Thank u, next!",
+        "poster": "thankunext.jpg",
+        "audio": "thankunext.mp3",
+        "song_image": "thankunext.jpg",
+        "album_id": 10,
+        "singer_id": "8"
+    },
+    {
+        "songName": "7 rings",
+        "poster": "7Rings.png",
+        "audio": "7Rings.mp3",
+        "song_image": "7Rings.png",
+        "album_id": 10,
+        "singer_id": "8"
+    },
+    {
+        "songName": "As long as you love me",
+        "poster": "aslongasyouloveme.jpg",
+        "audio": "aslongasyouloveme.mp3",
+        "song_image": "aslongasyouloveme.jpg",
+        "album_id": 11,
+        "singer_id": "9"
+    },
+    {
+        "songName": "I'm the one",
+        "poster": "iamtheone.jpg",
+        "audio": "iamtheone.mp3",
+        "song_image": "iamtheone.jpg",
+        "album_id": 11,
+        "singer_id": "9"
+    },
+    {
+        "songName": "Never Say Never",
+        "poster": "neversaynever.jpg",
+        "audio": "neversaynever.mp3",
+        "song_image": "neversaynever.jpg",
+        "album_id": 11,
+        "singer_id": "9"
+    },
+    {
+        "songName": "Boyfriend",
+        "poster": "boyfriend.jpg",
+        "audio": "boyfriend.mp3",
+        "song_image": "boyfriend.jpg",
+        "album_id": 11,
+        "singer_id": "9"
+    },
+    {
+        "songName": "Sorry",
+        "poster": "sorry.png",
+        "audio": "sorry.mp3",
+        "song_image": "sorry.jpg",
+        "album_id": 11,
+        "singer_id": "9"
+    },
+    {
+        "songName": "Love yourself",
+        "poster": "loveyourself.png",
+        "audio": "loveyourself.mp3",
+        "song_image": "loveyourself.jpg",
+        "album_id": 11,
+        "singer_id": "9"
+    },
+    {
+        "songName": "What do you mean",
+        "poster": "whatdoyoumean.png",
+        "audio": "whatdoyoumean.mp3",
+        "song_image": "whatdoyoumean.jpg",
+        "album_id": 11,
+        "singer_id": "9"
     }
 ]

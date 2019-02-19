@@ -9,6 +9,8 @@ import {
   DELETE_PLAYLIST
 } from './types'
 
+import { handleNotification } from './uiActions'
+
 export const getUserPlaylist = user_id => async dispatch => {
   const res = await axios.get(`/api/playlist/${user_id}`);
 
@@ -68,11 +70,11 @@ export const deletePlaylist = (user_id, list_id) => async dispatch => {
 }
 
 export const addSongToPlaylist = (user_id, list_id, song_id) => async dispatch => {
-  console.log(user_id, list_id, song_id);
   let res;
   try{
     res = await axios.put(`/api/playlist/addsong/${user_id}/${list_id}/${song_id}`);
     if(res.status === 200) {
+      dispatch(handleNotification(true, 'Song is added to playlist'));
       return dispatch({
         type: ADD_SONG_TO_PLAYLIST,
         payload: res.data

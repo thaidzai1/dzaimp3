@@ -52,5 +52,17 @@
         "singer_id": 7,
         "name": "Imagine Dragon's choice",
         "poster": "ImagineDragonChoice.jpg"
+    },
+    {
+        "id": 10,
+        "singer_id": 8,
+        "name": "Thank you, next",
+        "poster": "thankunext-album.png"
+    },
+    {
+        "id": 11,
+        "singer_id": 9,
+        "name": "Purpose",
+        "poster": "purpose.png"
     }
 ]

@@ -24,7 +24,7 @@ class PageAll extends Component {
     
 
     render() {
-        const { songs, auth, playlist, addSongToPlaylist, removeSongFromPlaylist, fetching } = this.props;
+        const { songs, auth, playlist, addSongToPlaylist, removeSongFromPlaylist, getSongAudio, fetching } = this.props;
         const { add_song_id } = this.state;
 
         console.log(auth);
@@ -34,7 +34,7 @@ class PageAll extends Component {
                 {
                     songs.map((song, index) => 
                         <div className="item-container" key={index}>
-                            <BoxMusic item={song} addToPlaylist={this.addToPlaylist}/>
+                            <BoxMusic item={song} addToPlaylist={this.addToPlaylist} Play={getSongAudio}/>
                         </div> 
                     )
                 }

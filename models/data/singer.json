@@ -33,5 +33,15 @@
         "id": 7,
         "name": "Imagine Dragon",
         "nationality": "American"
+    },
+    {
+        "id": 8,
+        "name": "Ariana Grande",
+        "nationality": "American"
+    },
+    {
+        "id": 9,
+        "name": "Justin Bieber",
+        "nationality": "Canada"
     }
 ]

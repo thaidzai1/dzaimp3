@@ -30,6 +30,8 @@ export const GET_ALBUM_SONGS = 'GET_ALBUM_SONGS';
 
 //UI
 export const UI_SEARCHING = 'UI_SEARCHING';
+export const UI_NOTIFICATION = 'UI_NOTIFICATION';
+export const UI_ADD_TO_PLAYLIST = 'UI_ADD_TO_PLAYLIST';
 
 //search 
 export const SEARCH = 'SEARCH';

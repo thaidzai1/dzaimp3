@@ -6,7 +6,7 @@ import { Loading } from '../components'
 const Loader = propName => WrappedComponent => {
   return class Loader extends Component {
     isLoading(data) {
-      if(data === null || data === undefined) {
+      if(data === null || data === undefined || data.length === 0) {
         return true;
       }
 

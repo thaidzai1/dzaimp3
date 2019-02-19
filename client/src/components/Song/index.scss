@@ -49,4 +49,25 @@
     max-height: 150px;
     overflow-y: scroll;
   }
+  .bg {
+    background-color: rgba(51, 51, 51, 0.70);
+    width: 400px;
+    height: 300px;  
+    p, span { color: white }
+  
+    .first-lyric, .second-lyric {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .first-lyric span, .second-lyric span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0px;
+        overflow: hidden;
+        white-space: nowrap;
+        color: pink;
+    }
+  }
 }

@@ -3,20 +3,13 @@ import PropTypes from 'prop-types'
 
 import { BoxMusic } from '../MusicItem'
 
-class NewAlbumItem extends Component {
-
-  shouldComponentUpdate(nextProps) {
-    return this.props.auth !== nextProps.auth;
-  }
-
-  render() {
-    const { album } = this.props;
-    return (
-      <div className='new-song-item'>
-        <BoxMusic item={album} type='album' />
-      </div>
-    )
-  }
+const NewAlbumItem = props => {
+  const { album, startPlaylist, getAlbumSongs } = props;
+  return (
+    <div className='new-song-item'>
+      <BoxMusic item={album} type='album' Play={startPlaylist} getAlbumSongs={getAlbumSongs} />
+    </div>
+  )
 }
 
 NewAlbumItem.propTypes = {

@@ -25,6 +25,13 @@
       color: #4593c1;
       cursor: pointer;
     }
+    .song-loading {
+      background-image: url('/image/Ripple-loading.gif');
+      background-size: contain;
+      background-repeat: no-repeat;
+      display: none;
+      padding: 10px;
+    }
     .btn-heart {
       color: #333;
     }

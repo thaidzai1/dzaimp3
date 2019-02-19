@@ -1,4 +1,5 @@
 import axios from 'axios'
+import lrcParser from 'lrc-parser'
 
 import {
   GET_SONG_AUDIO, START_PLAYLIST, PLAYLIST_QUEUE_NEXT, UPDATE_PLAYER_PLAYLIST, PLAYLIST_QUEUE_PREVIOUS
@@ -16,39 +17,76 @@ const initalPlayer = {
   nextSongIndex: null
 }
 
+async function getLyricFromMp3(link) {
+  console.log(link);
+  if(link !== null) {
+    const mp3Response = await axios.get("https://mp3.zing.vn/bai-hat/Lily-Alan-Walker-K-391-Emelie-Hollow/ZWA0OA6F.html");
+    let regex = /media\/get-source\?type=audio&key=.{33}/;
+    let match = mp3Response.data.match(regex);
+    if(!match) throw new Error("can't find the resource");
+    const [matchUrl] = match;
+    console.log(matchUrl);
+
+    // const mp3SongData = await axios.get(`https://mp3.zing.vn/xhr/${matchUrl}`);
+  
+    // let lyric = await axios.get(mp3SongData.data.data.lyric);
+
+    // let lrcFile = lrcParser(lyric.data).scripts;
+    // console.log(lrcFile);
+  }
+}
+
 //Just use to create a song audio
-export const getSongAudio= song_id => async dispatch => {
-  const res = await axios.get(`/api/song/${song_id}`);
-  dispatch(handleSearch());
-  let audio = new Audio();
-  audio.src = `/audio/${res.data.audio}`;
-  // audio.autoplay = true;
-  let song = {...res.data, audio};
-  return dispatch({
-    type: GET_SONG_AUDIO,
-    payload: song
+export const getSongAudio = song_id => dispatch => {
+  // Promise for using it in click play and show loading.gif 
+  //  and hidden loading.gif after promise done.
+  return new Promise(async function(resolve, reject) {
+    if(song_id) {
+      const res = await axios.get(`/api/song/${song_id}`);
+
+      let audio = new Audio();
+      audio.src = `/audio/${res.data.audio}`;
+      // audio.autoplay = true;
+      let song = {...res.data, audio};
+      dispatch({
+        type: GET_SONG_AUDIO,
+        payload: song
+      })
+      resolve(true);
+    }
+    reject(true);
   })
 }
 
-//Start playing a playlist
-export const startPlaylist = (playlist, list_id, songIndex = 0, user_id) => async dispatch => {
-  //generate a audio object to play song in play list depend on songIndex.
-  let audio = generateAudio(playlist[songIndex]);
-  //This is deep clone (nested array object array). Why do this?
-  //Avoid using same memory place. Why not? 
-  //This mutual => change this will affect or be affected by playlist you pass in
-  initalPlayer.playlist = JSON.parse(JSON.stringify(playlist));
-  //Just initialize some variable
-  if(songIndex + 1 < playlist.length){
-    initalPlayer.nextSongIndex = songIndex + 1;
-    initalPlayer.nextSong = playlist[songIndex + 1]._id;
-    initalPlayer.nowSong = playlist[songIndex]._id;
-  }
+// export const startASong = song => dispatch => {
 
-  console.log(initalPlayer);
-  return dispatch({
-    type: START_PLAYLIST,
-    payload: {playlist: initalPlayer.playlist, songIndex, audio, list_id, user_id}
+// }
+
+//Start playing a playlist
+export const startPlaylist = (playlist, list_id, songIndex = 0, user_id) => dispatch => {
+  // Promise for using it in click play and show loading.gif 
+  //  and hidden loading.gif after promise done.
+  return new Promise(async function(resolve, reject) {
+    //generate a audio object to play song in play list depend on songIndex.
+    let audio = generateAudio(playlist[songIndex]);
+    //This is deep clone (nested array object array). Why do this?
+    //Avoid using same memory place. Why not? 
+    //This mutual => change this will affect or be affected by playlist you pass in
+    initalPlayer.playlist = JSON.parse(JSON.stringify(playlist));
+    //Just initialize some variable
+    if(songIndex + 1 < playlist.length){
+      initalPlayer.nextSongIndex = songIndex + 1;
+      initalPlayer.nextSong = playlist[songIndex + 1]._id;
+      initalPlayer.nowSong = playlist[songIndex]._id;
+    }
+
+    // console.log(initalPlayer);
+
+    dispatch({
+      type: START_PLAYLIST,
+      payload: {playlist: initalPlayer.playlist, songIndex, audio, list_id, user_id}
+    })
+    resolve(true);
   })
 }
 

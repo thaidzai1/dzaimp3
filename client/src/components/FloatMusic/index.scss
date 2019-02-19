@@ -223,19 +223,23 @@ $float-position-left: 20px;
           }
           .song-item {
             display: flex;
+            margin: 5px;
             .song-info {
               height: 50px;
               flex-basis: 90%;
               display: flex;
               .poster {
-                flex: 1 1;
-                background-size: contain;
-                background-repeat: no-repeat;
+                // background-size: contain;
+                // background-repeat: no-repeat;
+                width: 50px;
               }
               .info {
                 flex: 3 1;
                 display: flex;
-                align-items: center;
+                align-self: center;
+                .song-name {
+                  margin: auto;
+                }
               }
             }
             .remove {

@@ -70,7 +70,7 @@ router.put('/playlist/addsong/:user_id/:list_id/:song_id',
     const song = await Song().findSongById(song_id);
     playlist.list[0].songs.push({_id: song_id, added_at: Date.now()});
     await playlist.save();
-    return res.status(200).json({song: song[0], list_id});
+    return res.status(200).json({song: song, list_id});
   }
 )
 

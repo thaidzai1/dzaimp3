@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import Item from './Item'
 import { BoxMusic } from '../MusicItem'
 
-const NewSongItem = ({ song, playlist, auth, addToPlaylist }) => {
-
+const NewSongItem = props => {
+  const BoxMusicProps = {...props, item: props.song, Play: props.getSongAudio};
   return (
     <div className='new-song-item'>
-      <BoxMusic item={song} playlist={playlist} auth={auth} addToPlaylist={addToPlaylist}/>
+      <BoxMusic {...BoxMusicProps}/>
     </div>
   )
 }

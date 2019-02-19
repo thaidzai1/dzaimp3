@@ -1,7 +1,9 @@
-import { UI_SEARCHING } from '../actions/types'
+import { UI_SEARCHING, UI_NOTIFICATION, UI_ADD_TO_PLAYLIST } from '../actions/types'
 
 const initialState = {
-    searching: false
+    searching: false,
+    notification: false,
+    add_song_id: null
 }
 
 export default function(state = initialState, actions) {
@@ -10,6 +12,17 @@ export default function(state = initialState, actions) {
             return {
                 ...state,
                 searching: actions.payload
+            }
+        case UI_NOTIFICATION: 
+            return {
+                ...state,
+                notification: actions.payload.active,
+                noti_message: actions.payload.message
+            }
+        case UI_ADD_TO_PLAYLIST: 
+            return {
+                ...state,
+                add_song_id: actions.payload
             }
         default: 
             return state;

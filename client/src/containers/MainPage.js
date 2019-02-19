@@ -3,7 +3,8 @@ import { Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import * as Container from './'
-import { Analyser } from '../components'
+import * as components from '../components'
+import { handleNotification } from '../actions/uiActions'
 
 class MainPage extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ class MainPage extends Component {
   }
 
   render() {
-    const { match, location, analyser } = this.props;
+    const { match, location, analyser, UI } = this.props;
 
     if(location.pathname === '/login' || location.pathname === '/signup'){
       return null;
@@ -19,10 +20,11 @@ class MainPage extends Component {
     
     return (
       <div className='main-page'>
+        <components.Notification active={UI.notification} message={UI.noti_message}/>
         <Container.NavBar />
         <Container.FloatPlayer />
         <div className='main-body'>
-          <Analyser show={analyser.show}/>
+          <components.Analyser show={analyser.show}/>
           <Route path={`${match.path}`} exact component={Container.HomePageContainer}/>
           <Route path={`${match.path}song/:name/:id`} component={Container.SongContainer}/>
           <Route path={`${match.path}album/:name/:id`} component={Container.AlbumDetailContainer}/>
@@ -35,6 +37,6 @@ class MainPage extends Component {
   }
 }
 
-const mapStateToProps = ({ analyser, playlist }) => ({ analyser, playlist });
+const mapStateToProps = ({ analyser, playlist, UI }) => ({ analyser, playlist, UI });
 
-export default connect(mapStateToProps)(MainPage)
+export default connect(mapStateToProps, { handleNotification })(MainPage)

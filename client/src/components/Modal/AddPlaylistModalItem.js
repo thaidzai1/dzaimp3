@@ -7,7 +7,7 @@ const AddPlaylistModalItem = ({
   playlist, user_id, song_id,
   addSongToPlaylist, removeSongFromPlaylist
 }) => {
-
+  console.log(playlist);
   let addedStickClass = ['add-list'];
   let SongInPlaylist = false;
   if(playlist.songs && playlist.songs.filter(song => song._id === song_id).length > 0) {

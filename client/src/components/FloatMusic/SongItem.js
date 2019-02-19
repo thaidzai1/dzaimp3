@@ -6,9 +6,10 @@ const SongItem = ({songIndex, song, auth, list_id, startPlaylist, removeSongFrom
   return (
     <div className='song-item'>
       <div className='song-info' onClick={() => startPlaylist(songIndex)}>
-        <div className='poster' style={{backgroundImage: `url('/image/poster/${song.poster}')`}}></div>
+        {/* <div className='poster' style={{backgroundImage: `url('/image/poster/${song.poster}')`}}></div> */}
+        <img className='poster' src={`/image/poster/${song.poster}`} />
         <div className='info'>
-          {song.singer ? `${song.songName}-${song.singer.name}` : ''}
+          <p className="song-name">{song.singer ? `${song.songName}-${song.singer.name}` : ''}</p>
         </div>
       </div>
       <div className='remove'

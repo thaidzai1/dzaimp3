@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { PageAll } from '../components'
 import { getSongWithPaging, fetchSongOnScroll } from '../actions/songActions'
 import { addSongToPlaylist, removeSongFromPlaylist } from '../actions/playlistActions'
+import { getSongAudio } from '../actions/playerActions'
 
 class PageAllContainer extends Component {
     constructor(props) {
@@ -14,6 +15,11 @@ class PageAllContainer extends Component {
             fetching: false
         }
     }
+
+    componentWillMount() {
+        window.scrollTo(0, 0);
+    }
+
     componentDidMount() {
         const { location: { search }, getSongWithPaging } = this.props;
         let params = new URLSearchParams(search);
@@ -48,8 +54,8 @@ class PageAllContainer extends Component {
     }
 
     render() {
-        const { song, playlist, auth, addSongToPlaylist, removeSongFromPlaylist } = this.props;
-        let PageAllProps = { songs: song.songs, playlist, addSongToPlaylist, removeSongFromPlaylist, fetching: this.state.fetching, auth };
+        const { song, playlist, auth, addSongToPlaylist, removeSongFromPlaylist, getSongAudio } = this.props;
+        let PageAllProps = { songs: song.songs, playlist, addSongToPlaylist, removeSongFromPlaylist, getSongAudio, fetching: this.state.fetching, auth };
         return (
             <PageAll {...PageAllProps}/>
         )
@@ -58,4 +64,11 @@ class PageAllContainer extends Component {
 
 const mapStateToProps = ({ song, playlist, auth }) => ({ song, playlist, auth });
 
-export default connect(mapStateToProps, { getSongWithPaging, fetchSongOnScroll, addSongToPlaylist, removeSongFromPlaylist })(PageAllContainer)
+export default connect(mapStateToProps, 
+{ 
+    getSongWithPaging, 
+    fetchSongOnScroll, 
+    addSongToPlaylist, 
+    removeSongFromPlaylist, 
+    getSongAudio 
+})(PageAllContainer)

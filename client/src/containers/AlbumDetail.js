@@ -5,6 +5,8 @@ import { AlbumDetail } from '../components'
 import Loader from '../HOC/Loader'
 import { getAlbumDetail, getAlbumSongs } from '../actions/albumActions'
 import { startPlaylist } from '../actions/playerActions'
+import { uiAddSongToPlaylist } from '../actions/uiActions'
+import { addSongToPlaylist, removeSongFromPlaylist } from '../actions/playlistActions'
 
 class AlbumDetailContainer extends Component {
   componentDidMount() {
@@ -15,20 +17,25 @@ class AlbumDetailContainer extends Component {
 
   render() {
     const { detail, songs } = this.props.album;
-    const { startPlaylist } = this.props;
-    
+    const { startPlaylist, album } = this.props;
+
+    let albumDetailProps = {...this.props, detail: album.detail, songs}
+    console.log(this.props.album, albumDetailProps)
     return (
-      <AlbumDetail album={detail} songs={songs} startPlaylist={startPlaylist}/>
+      <AlbumDetail {...albumDetailProps}/>
     )
   }
 }
 
-const mapStateToProps = ({ album }) => ({ album });
+const mapStateToProps = ({ album, UI, auth, playlist }) => ({ album, UI, auth, playlist });
 
 export default connect(mapStateToProps, 
   { 
     getAlbumDetail, 
     getAlbumSongs, 
-    startPlaylist 
+    startPlaylist,
+    addSongToPlaylist,
+    removeSongFromPlaylist,
+    uiAddSongToPlaylist
   }
 )(AlbumDetailContainer)

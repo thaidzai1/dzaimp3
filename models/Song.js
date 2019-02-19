@@ -29,6 +29,10 @@ const songSchema = new Schema({
   album_id: {
     type: Schema.Types.ObjectId,
     required: true
+  },
+  lyric: {
+    type: String,
+    default: null
   }
 })
 
@@ -62,7 +66,7 @@ songSchema.methods.findSongById = async function(song_id) {
     { $unwind: "$album"}
   ]);
 
-  return song;
+  return song[0];
 }
 
 songSchema.methods.getSongs = async function(limit=null, sort=1, sortDocument='created_at', skip=0) {

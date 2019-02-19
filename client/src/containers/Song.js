@@ -8,7 +8,6 @@ import { Song } from '../components'
 class SongContainer extends Component {
 
   componentWillMount() {
-    console.log('will')
     window.scrollTo(0, 0);
   }
   
@@ -27,13 +26,20 @@ class SongContainer extends Component {
     hideShowAnalyser(true);
   }
 
+  shouldComponentUpdate(nextProps) {
+    return this.props !== nextProps;
+  }
+
   componentWillUnmount() {
     this.props.hideShowAnalyser(false);
   }
 
   render() {
     const { player, startPlaylist } = this.props;
-
+    // if(player !== null) {
+    //   require('../util/lyric')(player.song);
+    // }
+    
     return (
       <Song player={player} startPlaylist={startPlaylist}/>
     )

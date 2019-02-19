@@ -2,6 +2,8 @@ const router = require('express').Router();
 const mongoose = require('mongoose');
 const path = require('path');
 const multer = require('multer');
+const axios = require('axios');
+const lrcParser = require('lrc-parser');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -51,13 +53,36 @@ router.post('/song', songMiddleware.createSong, async (req, res) => {
   }
 })
 
+// async function getLyricFromMp3(link) {
+//   return new Promise(async function(resolve, reject) {
+//     if(link !== null) {
+//       const mp3Response = await axios.get(link);
+//       let regex = /media\/get-source\?type=audio&key=.{33}/;
+//       let match = mp3Response.data.match(regex);
+//       console.log(match);
+//       if(!match) throw new Error("can't find the resource");
+//       const [matchUrl] = match;
+//       console.log(matchUrl);
+  
+//       const mp3SongData = await axios.get(`https://mp3.zing.vn/xhr/${matchUrl}`);
+    
+//       let lyric = await axios.get(mp3SongData.data.data.lyric);
+  
+//       let lrcFile = lrcParser(lyric.data).scripts;
+//       console.log(lrcFile);
+//       resolve(lrcFile);
+//     }
+//     reject(null);
+//   })
+// }
+
 router.get('/song/:id', async (req, res) => {
   const { id } = req.params;
   let song_id = mongoose.Types.ObjectId(id);
   const song = await Song().findSongById(song_id);
 
-  if(song.length > 0) {
-    return res.status(200).json(song[0]);
+  if(song) {
+    return res.status(200).json(song);
   }
   return res.status(400).json();
 })
@@ -73,7 +98,7 @@ router.post('/upload/file',
 router.put('/song/:id', songMiddleware.createSong, async (req, res) => {
   const { songName, poster, audio, song_image, singer_id, album_id } = req.body;
   let song = await Song.findById(req.params.id);
-
+  
   if(song !== null) {
     song.songName = songName;
     song.poster = poster;

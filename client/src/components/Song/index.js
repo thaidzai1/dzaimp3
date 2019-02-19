@@ -50,6 +50,7 @@ class Song extends Component {
 
   renderSongBox = () => {
     const { player } = this.props;
+
     if(player !== null) {
       return (
         <div className='song-box'

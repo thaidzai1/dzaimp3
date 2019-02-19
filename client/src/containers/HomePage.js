@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { getNewSongs } from '../actions/songActions'
-import { getNewAlbums } from '../actions/albumActions'
+import { getNewAlbums, getAlbumSongs } from '../actions/albumActions'
 import { addSongToPlaylist, removeSongFromPlaylist } from '../actions/playlistActions'
+import { getSongAudio, startPlaylist } from '../actions/playerActions'
 import { HomePage } from '../components'
 
 class HomePageContainer extends Component {
@@ -13,7 +14,7 @@ class HomePageContainer extends Component {
   }
 
   render() {
-    const { song, album, playlist, auth, addSongToPlaylist, removeSongFromPlaylist} = this.props;
+    const { song, album, playlist, auth, addSongToPlaylist, removeSongFromPlaylist, getSongAudio, getAlbumSongs, startPlaylist} = this.props;
 
     return (
       <HomePage
@@ -23,6 +24,9 @@ class HomePageContainer extends Component {
         addSongToPlaylist={addSongToPlaylist}
         removeSongFromPlaylist={removeSongFromPlaylist}
         newAlbums={album.newAlbums}
+        getSongAudio={getSongAudio}
+        getAlbumSongs={getAlbumSongs}
+        startPlaylist={startPlaylist}
       />
     )
   }
@@ -35,6 +39,9 @@ export default connect(mapStateToProps,
     getNewSongs,
     addSongToPlaylist,
     removeSongFromPlaylist,
-    getNewAlbums
+    getNewAlbums,
+    getSongAudio,
+    getAlbumSongs,
+    startPlaylist
   }
 )(HomePageContainer)

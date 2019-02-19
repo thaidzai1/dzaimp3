@@ -7,6 +7,8 @@ import Analyser from './Analyser'
 import AlbumDetail from './AlbumDetail'
 import PageAll from './PageAll'
 import Loading from './Loader'
+import Notification from './UI/Notification'
+import ControlPanel from './ControlPanel'
 
 export {
   AuthPage,
@@ -17,5 +19,7 @@ export {
   Analyser,
   AlbumDetail,
   PageAll,
-  Loading
+  Loading,
+  Notification,
+  ControlPanel
 }

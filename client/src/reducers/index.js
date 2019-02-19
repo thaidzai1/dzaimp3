@@ -6,6 +6,7 @@ import playlistReducer from './playlistReducer'
 import analyserReducer from './analyserReducer'
 import albumReducer from './albumReducer'
 import searchReducer from './searchReducer'
+import UIreducer from './UIreducer'
 
 export default combineReducers({
   auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   playlist: playlistReducer,
   analyser: analyserReducer,
   album: albumReducer,
-  search: searchReducer
+  search: searchReducer,
+  UI: UIreducer
 })

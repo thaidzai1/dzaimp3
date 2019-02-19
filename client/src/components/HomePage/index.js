@@ -28,8 +28,8 @@ class HomePage extends Component {
 
   render() {
     const {
-      newSong, newAlbums, playThisSong, playlist, auth,
-      addSongToPlaylist, removeSongFromPlaylist
+      newSong, newAlbums, playlist, auth,
+      addSongToPlaylist, removeSongFromPlaylist, getSongAudio, getAlbumSongs, startPlaylist
     } = this.props;
     const { add_song_id } = this.state;
 
@@ -46,6 +46,7 @@ class HomePage extends Component {
                     <NewSongItem song={item} key={index}
                       playlist={playlist} auth={auth}
                       addToPlaylist={this.addToPlaylist}
+                      getSongAudio={getSongAudio}
                     />
                 )
               })
@@ -73,7 +74,7 @@ class HomePage extends Component {
             {
               newAlbums.map((item, index) => {
                 return (
-                  <NewAlbumItem album={item} key={index}/>
+                  <NewAlbumItem album={item} key={index} getAlbumSongs={getAlbumSongs} startPlaylist={startPlaylist}/>
                 )
               })
             }

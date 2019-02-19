@@ -11,16 +11,18 @@ import initAnalyser from '../util/initAnalyzer'
 class FloatPlayer extends Component {
   componentDidMount() {
     const { auth, playlist, getUserPlaylist } = this.props;
-    if(auth !== null && auth.user !== undefined && playlist !== null) {
+    
+    if(auth !== null && auth.user !== undefined && playlist === null) {
       getUserPlaylist(auth.user._id);
     }
   }
   shouldComponentUpdate(nextProps) {
     const { auth, playlist, player, getUserPlaylist, updatePlayerPlaylist } = this.props;
-    
+
     //if auth update update component
     if(auth !== nextProps.auth) {
       //get user logged in playlist
+      console.log(auth, nextProps.auth);
       getUserPlaylist(nextProps.auth.user._id);
       return true;
     }
